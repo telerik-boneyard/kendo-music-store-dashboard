@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tablet.MvcMusicStore", "Tablet.MvcMusicStore\Tablet.MvcMusicStore.csproj", "{D70196F5-45B2-4E82-8A33-D5B952DCF1BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_test", "_test", "{2153D13B-AAEA-4438-B4DF-B84E89D9F51C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tablet.MvcMusicStore.Tests", "Tablet.MvcMusicStore.Tests\Tablet.MvcMusicStore.Tests.csproj", "{38BC2EF1-7677-4C56-BFD0-83099C017A9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D70196F5-45B2-4E82-8A33-D5B952DCF1BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D70196F5-45B2-4E82-8A33-D5B952DCF1BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D70196F5-45B2-4E82-8A33-D5B952DCF1BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D70196F5-45B2-4E82-8A33-D5B952DCF1BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38BC2EF1-7677-4C56-BFD0-83099C017A9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38BC2EF1-7677-4C56-BFD0-83099C017A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38BC2EF1-7677-4C56-BFD0-83099C017A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38BC2EF1-7677-4C56-BFD0-83099C017A9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{38BC2EF1-7677-4C56-BFD0-83099C017A9D} = {2153D13B-AAEA-4438-B4DF-B84E89D9F51C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal

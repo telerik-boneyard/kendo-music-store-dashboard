@@ -1,0 +1,288 @@
+﻿
+.social-pie {
+    margin: 10px 20px;
+    width: 640px;
+    height: 300px;
+}
+
+.social-tiles {
+    width: 900px;
+    margin: 0 auto 30px auto;
+    display: block;
+    height: 125px;
+}
+
+.social-tile-wrapper {
+    height: 110px;
+    float: left;
+}
+
+.social-tile {
+    display: inline-block;
+    margin: 5px;
+    width: 96px;
+    height: 96px;
+    background: url('../img/social-logos.png') no-repeat;
+    border: solid transparent 1px;
+    -webkit-border-radius: 17px;
+    border-radius: 17px;
+    float: right;
+}
+
+.social-tile-selected {
+    border: solid #F18449 2px;
+}
+
+.social-tile-title {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #59595B;
+    color: #333134;
+    font: 16px/1.8em Arial,sans-serif;
+    padding: 1px 20px 1px 30px;
+    float: right;
+    position: relative;
+    top: 40px;
+    left: -20px;
+    z-index: -5;
+}
+
+.social-tile-title-selected {
+    background-color: #F18449;
+    color: #fff;
+}
+
+.facebook-tile {
+    background-position: -101px 0;
+}
+
+.twitter-tile {
+    background-position: -202px 0;
+}
+
+.google-tile {
+    background-position: 0 0;
+}
+
+.pinterest-tile {
+    background-position: -303px 0;
+    -webkit-border-radius: 48px;
+    border-radius: 48px;
+
+}
+
+.temp-gauge-background {
+    background: gainsboro;
+}
+
+.temp-linear-gauge {
+    width: 24%;
+    float: left;
+    height: 250px;
+}
+
+.social-linear-gauges-wrapper {
+    width: 100%;
+}
+
+.social-linear-gauge-wrapper {
+    float: left;
+    background: url("../img/guitars-gauges.png?v=1");
+    background-repeat: no-repeat;
+    height: 430px;
+    width: 130px;
+    padding: 80px 0 0 0;
+    margin: 0 4.5%;
+    background-position-y: 0px;
+}
+
+
+.social-acoustic-linear-gauge-wrapper {
+    background-position-x: -294px;
+    background-position-y: -15px;
+}
+
+
+.social-gplus-linear-gauge-wrapper {
+    background-position-x: -33px;
+}
+
+.social-pinterest-linear-gauge-wrapper {
+    background-position-x: -928px;
+}
+
+.social-twitter-linear-gauge-wrapper {
+    background-position-x: -762px;
+}
+
+.social-facebook-linear-gauge-wrapper {
+    background-position-x: -552px;
+}
+
+
+.social-linear-gauge-wrapper > div {
+    width: 100%;
+}
+
+
+.social-stats-wrapper {
+    width: 90%;
+    margin: auto;
+}
+
+.social-chart-wrapper {
+    width: 100%;
+    margin: 10px auto 30px auto;
+}
+
+#social-stats-chart {
+    width: 100%;
+    height: 400px;
+}
+
+.social-gauges-wrapper {
+    width: 90%;
+    margin: 10px auto 30px auto;
+}
+
+#top-artists-tabstrip {
+    width: 66%;
+    margin: auto;
+    background: none;
+    border: none;
+}
+
+
+#top-songs-tabstrip {
+    width: 90%;
+    margin: 0 auto 5px auto;
+    background: none;
+    border: none;
+}
+
+    #top-artists-tabstrip .k-tabstrip-items,
+    #top-songs-tabstrip .k-tabstrip-items {
+        padding: 0;
+    }
+
+    .time-sales-tab,
+    #top-artists-tabstrip .k-item,
+    #top-songs-tabstrip .k-item {
+        width: 19.8%;
+        border: 0;
+        margin: 0;
+        padding: 2px 0 2px;
+        text-align: center;
+        cursor: pointer;
+        background: none;
+        font: 14px/1.5em Arial,sans-serif;
+        color: #333134;
+        background-color: #59595B;
+        height: 1.7em;
+        overflow: hidden;
+        font-weight: bold;
+    }
+
+    
+    #top-artists-tabstrip .k-link,
+    #top-songs-tabstrip .k-link {
+        background: none;
+        padding: 0 .5em;
+        height: 1.8em;
+        line-height: 1.6em;
+    }
+
+    .time-sales-tab-selected,
+    #top-artists-tabstrip .k-state-active,
+    #top-songs-tabstrip .k-state-active {
+        border: none;
+        color: #fff;
+        background: #EF8549;
+    }
+
+#top-songs-tabstrip .k-item:first-of-type,
+#top-artists-tabstrip .k-item:first-of-type
+{
+    -webkit-border-radius: 5px 0px 0px 5px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+
+#top-songs-tabstrip .k-item:last-of-type,
+#top-artists-tabstrip .k-item:last-of-type
+{
+    -webkit-border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+
+.radial-gauge-container {
+    height: 250px;
+    display: inline-block;
+    margin: 1%;
+    background-image: url("../img/record-gauge-home.png");
+    background-repeat: no-repeat;
+    background-position-y: 15px;
+    width: 225px;
+}
+
+.linear-gauge-container {
+    height: 430px;
+    padding: 80px 0 0 0;
+    display: inline-block;
+    margin: 1%;
+    width: 130px;
+}
+
+
+.social-gauges,
+.social-linear-gauges {
+    margin: 0 1%;
+    display: inline-block;
+    float: left;
+}
+
+
+.social-gauges {
+    width: 30%;
+}
+
+.social-linear-gauges {
+    width: 60%;
+}
+
+@media only screen and (min-width : 1024px) and (max-width : 1200px) {
+
+    .social-linear-gauge-wrapper {
+        margin: 0 1%;
+    }
+
+    .linear-gauge-container {
+        display: none;
+    }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+    /* Styles */
+
+    #top-artists-tabstrip .k-item {
+        font: 14px/1.5em Arial,sans-serif;
+    }
+
+    .linear-gauge-container {
+        display: none;
+    }
+
+    .social-tiles {
+        padding-left: 1%;
+    }
+
+    .social-linear-gauges {
+        width: 550px;
+    }
+
+    .social-linear-gauge-wrapper {
+        margin: 0;
+    }
+}

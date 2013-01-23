@@ -1,0 +1,376 @@
+body {
+    background: #332E32;
+    font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    background-image:url("../img/Equalizer.png");
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+h1 {
+    color: #EF8549;
+    letter-spacing: 0;
+    font-weight: 200;
+    font-size: 42pt;
+    line-height: 44pt;
+}
+
+    h1:hover {
+        color: #A05432;
+    }
+
+#main-header {
+    margin: 20px 0;
+    width: 85%;
+    background: #F18449;
+    color: #fff;
+    height: 60px;
+    float: left;
+    padding-left: 125px;
+    background-image: url("../img/3_RecordsLogo.png");
+    background-repeat: no-repeat;
+}
+
+.main-header-pennant {
+    width: 0px;
+    height: 0px;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #F18449;
+    border-left: none;
+    border-bottom: 30px solid #F18449;
+    float: left;
+    margin: 20px 0;
+}
+
+.main-title {
+    line-height: 40px;
+    margin: 10px 0;
+    font-size: 2.5em;
+    color: white;
+    font-weight: bold;
+    width: 450px;
+    display: inline-block;
+    float: left;
+    font-style:italic;
+}
+
+.main-nav {
+    display: inline-block;
+    margin: 0 10px;
+    float: right;
+}
+
+.main-nav-item {
+    font-size: 1.25em;
+    line-height: 60px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/*.main-nav-item-selected {
+    background: #332E32;
+}*/
+
+.main-nav-item span {
+    float: left;
+}
+
+.main-nav-item-icon {
+    background-image: url("../img/Header_Icons_final.png");
+    background-repeat: no-repeat;
+    background-position-y: -108px;
+    height: 60px;
+    width: 80px;
+    line-height: 60px;
+    display: inline-block;
+}
+
+.main-nav-item-icon-selected {
+    background-position-y: 0px;
+}
+
+.nav-sales-icon {
+    background-position-x: -88px;
+}
+
+.nav-social-icon {
+    background-position-x: -182px;
+}
+
+.nav-music-icon {
+    background-position-x: 0px;
+}
+
+#main-menu {
+    color: #fff;
+    margin: 10px auto;
+    height: 50px;
+    width: 510px;
+}
+
+.sales-view-nav,
+.music-view-nav,
+.social-view-nav {
+    width: 140px;
+    height: 42px;
+    line-height: 20px;
+    padding: 10px 10px 10px 40px;
+    color: white;
+    font-size: .8em;
+    vertical-align: baseline;
+}
+
+h2 {
+    color: #EF8549;
+    letter-spacing: 0.01em;
+    font-weight: 200;
+    font-size: 20pt;
+    font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+    line-height: 24pt;
+}
+
+    h2:hover {
+        color: #A05432;
+    }
+
+    h2:active {
+        color: #A05432;
+    }
+
+
+.store-nav {
+    width: 150px;
+    background-color: #D88E2F;
+    height: 42px;
+    float: left;
+    margin: 10px;
+}
+
+
+.home-view {
+    clear: both;
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+.dashboard-container-main {
+    width: 1530px;
+}
+
+.dashboard-container-music {
+    width: 2000px;
+}
+
+#container {
+    clear: both;
+}
+
+
+
+.orange {
+    color: #EF8549;
+}
+
+.italic
+{
+    font-style:italic;
+    font-weight:normal;
+}
+
+
+.metro-panel {
+    float: left;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.wide {
+    width: 570px;
+}
+
+.slim {
+    width: 420px;
+}
+
+.metro-tile {
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+
+    .metro-tile img {
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 130px;
+        height: 130px;
+    }
+
+.small {
+    width: 150px;
+    height: 150px;
+}
+
+.medium {
+    width: 340px;
+    height: 340px;
+}
+
+.medium-flat {
+    width: 340px;
+    height: 150px;
+}
+
+.gray {
+    background: #525252;
+}
+
+.light-gray {
+    background: #D5D5D5;
+}
+
+.dark-gray {
+    background: #686868;
+}
+
+.blue {
+    background: #2D89EF;
+}
+
+.light-blue {
+    background: #24A0DA;
+}
+
+.k-chart {
+    height: 300px;
+    /*padding: 37px;
+    width: 390px;*/
+}
+
+
+#bar-chart .k-chart {
+    background: red;
+}
+
+/* Chart Type*/
+
+#chart-type-chooser {
+    float: right;
+    margin-top: -30px;
+    margin-right: .2%;
+    width: 170px;
+    text-align: right;
+    line-height: 32px;
+}
+
+.radio-group-label {
+    margin-right: 12px;
+    color: #727f8e;
+}
+
+.radio-group {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    vertical-align: top;
+}
+
+    .radio-group > li {
+        display: inline-block;
+        *display: inline;
+        -ms-zoom: 1;
+        zoom: 1;
+    }
+
+    .radio-group label {
+        display: inline-block;
+        overflow: hidden;
+        width: 32px;
+        height: 32px;
+        border-radius: 16px;
+        background: #b3bbc5 no-repeat center center;
+        color: transparent;
+        font: 0/0;
+    }
+
+    .radio-group input {
+        display: none;
+    }
+
+        .radio-group input:checked + label {
+            background-color: #D88E2F;
+        }
+
+    .radio-group label[for="chart-type-area"],
+    .radio-group label[htmlFor="chart-type-area"] {
+        background-image: url("../img/area-chart.png");
+    }
+
+    .radio-group label[for="chart-type-line"],
+    .radio-group label[htmlFor="chart-type-line"] {
+        background-image: url("../img/line-chart.png");
+    }
+
+.k-gauge {
+    margin-top: -20px;
+}
+
+.vertical-gauge {
+    float: left;
+    margin-left: 30px;
+    padding: 18px;
+    width: 150px;
+    height: 400px;
+    text-align: center;
+}
+
+    .vertical-gauge h2 {
+        margin: 0 auto 10px auto;
+    }
+
+#gauge {
+    margin: 0 auto 0;
+    width: 100%;
+    height: 370px;
+}
+
+.record-tooltip {
+    background: #1b1a1b; /* Old browsers */
+    border-radius: 100px;
+    border: solid #fff 2px;
+    height: 100px;
+    width: 100px;
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+.simple-title {
+    text-align: center;
+    margin: 0 auto 10px auto;
+}
+
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+    /* Styles */
+
+    #main-header {
+        width: 80%;
+    }
+
+    .main-title {
+        font-size: 2em;
+        width: 350px;
+    }
+
+
+}
