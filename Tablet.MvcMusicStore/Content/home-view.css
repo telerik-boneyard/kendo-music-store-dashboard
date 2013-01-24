@@ -125,7 +125,7 @@
     margin: 0 40px;
     background-image: url("../img/record-gauge-home.png");
     background-repeat: no-repeat;
-    background-position-y: 15px;
+    background-position: 0 15px;
     width: 225px;
 }
 

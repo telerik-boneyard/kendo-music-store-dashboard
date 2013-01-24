@@ -1,0 +1,16 @@
+﻿@model int
+
+@{
+    ViewBag.Title = "Checkout Complete";
+}
+
+@section scripts
+{
+    <script src="~/Scripts/App/checkout-complete.js"></script>
+}
+
+<section class="checkout-complete">
+<h3>Checkout Complete</h3>
+<p>Thanks for your order! Your order number is: @Model</p>
+<a href="/" class="k-button">Return to Store</a>
+    </section>

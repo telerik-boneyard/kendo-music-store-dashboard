@@ -147,5 +147,22 @@ namespace Tablet.MvcMusicStore.Controllers.Api
             }
 
         }
+
+        /// <summary>
+        /// Returns the value to be displayed in the main page gauges
+        /// </summary>
+        /// <returns>A dynamic type containing the gauge value.</returns>
+        [HttpGet]
+        public dynamic Gauges()
+        {
+            var random = new Random();
+            return new
+                       {
+                           Albums = random.Next(-20, 20),
+                           Singles = random.Next(-20, 20),
+                           Customers = random.Next(-20, 20),
+                           Visitors = random.Next(-20, 20)
+                       };
+        }
     }
 }

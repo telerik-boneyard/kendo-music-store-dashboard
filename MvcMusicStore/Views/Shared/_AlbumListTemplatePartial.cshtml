@@ -1,0 +1,8 @@
+﻿<script id="album-template" type="text/x-kendo-template">
+    <div class="album" data-bind="click: viewAlbumDetails">
+        <img src="" data-bind="attr: { src: AlbumArtUrl }" />
+        <span class="title" data-bind="text: Title"></span>
+        <span class="artist" data-bind="text: Artist.Name"></span>
+        <span class="price" data-bind="textFormatted: Price" data-format="c"></span>
+    </div>
+</script>

@@ -34,85 +34,76 @@
 }
 
 .chart-type-area {
-    background-position-y: 2px;
-    background-position-x: -60px;
+    background-position: -60px 2px;
 }
 
 .chart-type-line {
-    background-position-y: 2px;
-    background-position-x: -90px;
+    background-position: -90px 2px;
 }
 
 .chart-type-column {
-    background-position-y: -18px;
-    background-position-x: -90px;
+    background-position: -90px -18px;
 }
 
 .chart-type-bar {
-    background-position-y: -118px;
-    background-position-x: -90px;
+    background-position: -90px -118px;
 }
 
 .chart-type-pie {
-    background-position-y: -46px;
-    background-position-x: -60px;
+    background-position: -60px -46px;
 }
 
 .chart-type-bubble {
-    background-position-y: -78px;
-    background-position-x: -60px;
+    background-position: -60px -78px;
 }
 
 .chart-type-doughnut {
-    background-position-y: -78px;
-    background-position-x: -90px;
+    background-position: -90px -78px;
 }
 
 .chart-type-scatter {
-    background-position-y: -114px;
-    background-position-x: -60px;
+    background-position: -60px -114px;
 }
 
 .chart-type-stacked-bar {
-    background-position-y: -148px;
-    background-position-x: -90px;
+    background-position: -90px -148px;
 }
 
 
 .chart-type-area-selected {
-    background-position-x: 0px;
+    background-position: 0px 2px;
 }
 
 .chart-type-line-selected {
-    background-position-x: -30px;
+    background-position: -30px  2px;
 }
 
 .chart-type-column-selected {
-    background-position-x: -30px;
+    background-position: -30px -18px;
 }
 
 .chart-type-bar-selected {
-    background-position-x: -30px;
+    background-position: -30px -118px;
 }
 
 .chart-type-pie-selected {
-    background-position-x: 0px;
+    background-position: 0px -46px;
 }
 
 .chart-type-bubble-selected {
-    background-position-x: 0px;
+    background-position: 0px -78px;
 }
 
 .chart-type-doughnut-selected {
-    background-position-x: -30px;
+    background-position: -30px -78px;
 }
 
 .chart-type-scatter-selected {
-    background-position-x: 0px;
+    background-position: 0px -114px;
 }
 
 .chart-type-stacked-bar-selected {
-    background-position-x: -30px;
+    background-position: -30px -148px;
 }
 
 .store-thin-tabs {

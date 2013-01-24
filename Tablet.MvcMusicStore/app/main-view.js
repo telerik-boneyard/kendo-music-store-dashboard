@@ -1,6 +1,5 @@
 ﻿var defaultGaugeMin = 100,
-    defaultGaugeMax = 400,
-    albumsPerHr = 0;
+    defaultGaugeMax = 400;
 
 
 function createMainView() {
@@ -10,9 +9,8 @@ function createMainView() {
     displayTopAlbums();
     CreateGauges();
     
-    albumsPerHr = setInterval(UpdateGauges, 5000);
+    setInterval(UpdateGauges, 5000);
 
-  //  new KineticScroll(document.getElementById("topSinglesListView"));
 };
 
 function displayMainViewTotals() {
@@ -33,7 +31,6 @@ function displayMainViewTotals() {
           }  
         },
         change: function (data) {
-            console.log(data.items[0]);
             kendo.bind($("#home-view"), data.items[0]);
         }
     });
@@ -167,45 +164,30 @@ function CreateGauge(selector, value, min, max) {
 
 };
 
+
 function UpdateGauges() {
-
-    UpdateGauge(".albums-per-hour");
-    UpdateGauge(".singles-per-hour");
-    UpdateGauge(".new-customers-per-hour");
-    UpdateGauge(".visitors-per-hour");
-
-};
-
-function randomDelta(value) {
-
-    var v = parseInt(Math.floor((Math.random() * 40) - 20), 10);
-
-    if (v + value > defaultGaugeMax) {
-        value -= v;
-    } else {
-        value += v;
-    }
-
-    return value;
-
+    //fetch new gauge data
+    var gaugeValueDataSource = new kendo.data.DataSource({
+        transport: {
+            read: 'api/sales/gauges'
+        },
+        schema: {
+            data: function (response) {
+                return [response];
+            }
+        },
+        change: function (data) {
+            ApplyGaugeDelta('.albums-per-hour', data.items[0].Albums);
+            ApplyGaugeDelta('.singles-per-hour', data.items[0].Singles);
+            ApplyGaugeDelta('.new-customers-per-hour', data.items[0].Customers);
+            ApplyGaugeDelta('.visitors-per-hour', data.items[0].Visitors);
+        }
+    });
+    gaugeValueDataSource.read();
 }
 
-function UpdateGauge(selector) {
-
-    if (!selector || selector === "") {
-        return;
-    }
-
-    var gauge = $(selector).data("kendoRadialGauge");
-
-    if (gauge.length > 1) {
-
-        gauge.value(randomDelta(gauge.value()));
-
-    } else {
-
-        clearInterval(albumsPerHr);
-
-    }
-
-};
+function ApplyGaugeDelta(selector, delta) {
+    var gauge = $(selector).data('kendoRadialGauge');
+    var value = gauge.value();
+    gauge.value(value + delta);
+}

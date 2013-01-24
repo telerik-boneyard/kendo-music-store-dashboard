@@ -1,0 +1,47 @@
+﻿@model MvcMusicStore.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<section class="demo-information">
+    <p>For demonstration purposes, the "administrative" login for the music store is:</p>
+     <p>Username: Owner</p>
+    <p>Password: p@ssword123</p>
+</section>
+
+<h3>@ViewBag.Title</h3>
+
+<section id="loginForm" class="login">
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+        <ul>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </li>
+            <li>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </li>
+        </ul>
+      
+        <input type="submit" value="Log in" class="k-button" />
+    
+    <p class="login-small">
+        @Html.ActionLink("Register", "Register") if you don't have an account.
+    </p>
+}
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

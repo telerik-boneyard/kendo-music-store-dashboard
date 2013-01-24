@@ -4,9 +4,9 @@ body {
     color: #fff;
     padding: 0;
     margin: 0;
-    background-image:url("../img/Equalizer.png");
-    background-position:center;
-    background-repeat:no-repeat;
+    background-image: url("../img/Equalizer.png");
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 h1 {
@@ -53,7 +53,7 @@ h1 {
     width: 450px;
     display: inline-block;
     float: left;
-    font-style:italic;
+    font-style: italic;
 }
 
 .main-nav {
@@ -69,13 +69,13 @@ h1 {
     vertical-align: middle;
 }
 
-/*.main-nav-item-selected {
+    /*.main-nav-item-selected {
     background: #332E32;
 }*/
 
-.main-nav-item span {
-    float: left;
-}
+    .main-nav-item span {
+        float: left;
+    }
 
 .main-nav-item-icon {
     background-image: url("../img/Header_Icons_final.png");
@@ -87,21 +87,31 @@ h1 {
     display: inline-block;
 }
 
-.main-nav-item-icon-selected {
-    background-position-y: 0px;
-}
 
 .nav-sales-icon {
-    background-position-x: -88px;
+    background-position: -88px -110px;
 }
 
 .nav-social-icon {
-    background-position-x: -182px;
+    background-position: -182px  -110px;
 }
 
 .nav-music-icon {
-    background-position-x: 0px;
+    background-position: 0px  -110px;
 }
+
+.main-nav-item-selected > .nav-sales-icon {
+    background-position: -88px 0px;
+}
+
+.main-nav-item-selected > .nav-social-icon {
+    background-position: -182px 0px;
+}
+
+.main-nav-item-selected > .nav-music-icon {
+    background-position: 0px  0px;
+}
+
 
 #main-menu {
     color: #fff;
@@ -177,10 +187,9 @@ h2 {
     color: #EF8549;
 }
 
-.italic
-{
-    font-style:italic;
-    font-weight:normal;
+.italic {
+    font-style: italic;
+    font-weight: normal;
 }
 
 
@@ -371,6 +380,4 @@ h2 {
         font-size: 2em;
         width: 350px;
     }
-
-
 }

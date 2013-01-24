@@ -1,0 +1,13 @@
+﻿@section scripts
+{
+    <script src="~/Scripts/App/store-browse.js"></script>
+}
+
+@Html.Partial("_AlbumListTemplatePartial")
+
+<section class="album-list">
+    <h3 data-bind="text: genre.Name"></h3>
+    <div data-role="pager" data-bind="source: albums"></div>
+    <div class="clearfix" data-role="listview" data-bind="source: albums" data-template="album-template"></div>
+    <div data-role="pager" data-bind="source: albums"></div>
+</section>

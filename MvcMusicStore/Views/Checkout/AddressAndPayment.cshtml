@@ -1,0 +1,88 @@
+﻿@model MvcMusicStore.Models.OrderSubmit
+@using Kendo.Mvc.UI
+@using MvcMusicStore.Helpers
+
+@{
+    ViewBag.Title = "Address And Payment";
+}
+
+@section scripts {
+    <script src="@Url.Content("~/bundles/jqueryval")"></script>
+    <script src="~/Scripts/App/checkout-addressandpayment.js"></script>
+}
+
+<script id="cartItemTemplate" type="text/x-kendo-template">
+    <input type="hidden" name="a#= Album.AlbumId #" value="#= Quantity #" />
+</script>
+
+@using (Html.BeginForm()) {
+    <section class="checkout-info" data-role="validator">
+        <div>
+            <h3>Customer Address</h3>
+
+            <div class="editor-label">@Html.LabelFor(x => x.Order.FirstName)</div>
+            <div class="editor-field">@Html.Kendo().TextValidatorFor(x => x.Order.FirstName)</div>
+
+            <div class="editor-label">@Html.LabelFor(x => x.Order.LastName)</div>
+            <div class="editor-field">@Html.Kendo().TextValidatorFor(x => x.Order.LastName)</div>
+
+            <div class="editor-label">@Html.LabelFor(x => x.Order.Address)</div>
+            <div class="editor-field">@Html.Kendo().TextValidatorFor(x => x.Order.Address)</div>
+
+            <div class="editor-label">@Html.LabelFor(x => x.Order.City)</div>
+            <div class="editor-field">@Html.Kendo().TextValidatorFor(x => x.Order.City)</div>
+
+            <div class="editor-label">@Html.LabelFor(x => x.Order.State)</div>
+            <div class="editor-field">@Html.Kendo().TextValidatorFor(x => x.Order.State)</div>
+
+            <div class="editor-label">@Html.LabelFor(x => x.Order.PostalCode)</div>
+            <div class="editor-field">@Html.Kendo().TextValidatorFor(x => x.Order.PostalCode)</div>
+
+            <div class="editor-label">@Html.LabelFor(x => x.Order.Country)</div>
+            <div class="editor-field">@Html.Kendo().TextValidatorFor(x => x.Order.Country)</div>
+
+            <div class="editor-label">@Html.LabelFor(x => x.Order.Phone)</div>
+            <div class="editor-field">@Html.Kendo().TextValidatorFor(x => x.Order.Phone)</div>
+
+            <div class="editor-label">@Html.LabelFor(x => x.Order.Email)</div>
+            <div class="editor-field">@Html.Kendo().TextValidatorFor(x => x.Order.Email)</div>
+        </div>
+        <div>
+            <h3>Shipping Details</h3>
+            @Html.Label("shippingPriority", "Shipping Priority")
+            <div class="editor-field">
+                @(Html.Kendo().DropDownList()
+                    .Name("shippingPriority")
+                    .DataTextField("Text")
+                    .DataValueField("Value")
+                    .BindTo(Model.ShippingMethods)
+                    .Value(Model.ShippingMethod)
+                )
+            </div>
+
+            @Html.Label("shippingDate", "Select a Ship Date")
+            <span class="note">Orders can be set to ship later, up to 60 days in the future.</span>
+            <div class="editor-field">
+                @(Html.Kendo().Calendar()
+                    .Name("shippingDate")
+                    .Min(DateTime.Today.AddDays(-DateTime.Today.Day+1))
+                    .Max(DateTime.Today + TimeSpan.FromDays(60))
+                    .Value(DateTime.Today)
+                    .Footer("Today - #=kendo.toString(data, 'd') #")
+                    .MonthTemplate("# if(data.date < Date.today()) {# <div class='past'>#=data.value#</div> #} else {# #= data.value# # } #")
+                    .Events(e => e
+                        .Change(@<text>
+                            function(e) {
+                                if(e.sender.value() < Date.today()) {
+                                    e.sender.value(Date.today());
+                                }
+                            }
+                          </text>)
+                    )
+                )
+            </div>
+        </div>
+        <input type="submit" value="Submit Order" class="k-button" data-bind="click: doValidation" />
+    </section>
+    <div data-bind="source: cartItems" data-template="cartItemTemplate"></div>
+}
