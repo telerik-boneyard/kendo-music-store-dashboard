@@ -347,12 +347,15 @@
     <Content Include="img\header-nav-icons.png" />
     <Content Include="humans.txt" />
     <Content Include="img\Header_Icons_final.png" />
+    <Content Include="img\kendo-logo.png" />
     <Content Include="img\kendo-ui-logo.png" />
     <Content Include="img\line-chart.png" />
     <Content Include="img\nav-icons-36.png" />
     <Content Include="img\Pinterest_Guitar_gauge.jpg" />
     <Content Include="img\Pinterest_Guitar_gauge.png" />
     <Content Include="img\record-gauge-home.png" />
+    <Content Include="img\RiaFontBlue.png" />
+    <Content Include="img\RiaFontHover.png" />
     <Content Include="img\social-icons.png" />
     <Content Include="img\social-logos.png" />
     <Content Include="img\sprite.png" />

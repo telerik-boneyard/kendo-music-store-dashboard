@@ -3,39 +3,41 @@
 "use strict";
 
 (function () {
-    var app = $.sammy('#main', function () {
+    //Instantiate Sammy Single Page App...
+    var app = $.sammy('#main', function() {
 
-        $(".sales-album, .nav-sales").click(function (e) {
+        //Wiring up handlers for touch menu buttons...
+        $(".sales-album, .nav-sales").click(function(e) {
             e.preventDefault();
             e.stopPropagation();
             window.location = "#/sales";
 
         });
 
-        $(".social-album, .nav-social").click(function (e) {
+        $(".social-album, .nav-social").click(function(e) {
             e.preventDefault();
             e.stopPropagation();
             window.location = "#/social";
 
         });
 
-        $(".charts-album, .nav-music").click(function (e) {
+        $(".charts-album, .nav-music").click(function(e) {
             e.preventDefault();
             e.stopPropagation();
             window.location = "#/";
 
         });
 
-        $("#main-header, .main-header-pennant").click(function (e) {
+        $("#main-header, .main-header-pennant").click(function(e) {
             e.preventDefault();
             e.stopPropagation();
             window.location = "#/";
-            
+
         });
 
-
-        this.get('#/', function (context) {
-            this.partial('app/views/main.html?v=1', null, function () {
+        //Wiring up sammy routes...
+        this.get('#/', function(context) {
+            this.partial('app/views/main.html?v=1', null, function() {
 
                 createMainView();
 
@@ -47,8 +49,8 @@
             });
         });
 
-        this.get('#/social', function (context) {
-            this.partial('app/views/social.html?v=1', null, function () {
+        this.get('#/social', function(context) {
+            this.partial('app/views/social.html?v=1', null, function() {
 
                 createSocialView();
 
@@ -60,22 +62,9 @@
             });
         });
 
-        this.get('#/music', function (context) {
-            this.partial('app/views/music.html?v=1', null, function () {
+        this.get('#/sales', function(context) {
 
-                createMusicView();
-
-                $(".main-nav-item-selected").removeClass("main-nav-item-selected");
-                $(".main-nav-item-icon-selected").removeClass("main-nav-item-icon-selected");
-                $(".nav-music-icon").addClass("main-nav-item-icon-selected");
-                $(".nav-music").addClass("main-nav-item-selected");
-
-            });
-        });
-
-        this.get('#/sales', function (context) {
-
-            this.partial('app/views/sales.html?v=1.1', null, function () {
+            this.partial('app/views/sales.html?v=1.1', null, function() {
 
                 createSalesView();
 
@@ -89,11 +78,11 @@
 
     });
 
-    $(function () {
+    $(function() {
         $(document).data("kendoSkin", "uniform");
         app.run('#/');
 
     });
 
-})()
+})();
 

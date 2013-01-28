@@ -4,6 +4,8 @@
 
 function createMainView() {
 
+    $(".main-title").text("Music Store Sales");
+    
     displayMainViewTotals();
     displayTopSingles();
     displayTopAlbums();
