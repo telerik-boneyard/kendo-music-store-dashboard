@@ -68,7 +68,6 @@
     background-position: -303px 0;
     -webkit-border-radius: 48px;
     border-radius: 48px;
-
 }
 
 .temp-gauge-background {
@@ -93,30 +92,28 @@
     width: 130px;
     padding: 80px 0 0 0;
     margin: 0 4.5%;
-    background-position-y: 0px;
 }
 
 
 .social-acoustic-linear-gauge-wrapper {
-    background-position-x: -294px;
-    background-position-y: -15px;
+    background-position: -294px -15px;
 }
 
 
 .social-gplus-linear-gauge-wrapper {
-    background-position-x: -33px;
+    background-position: -33px 0px;
 }
 
 .social-pinterest-linear-gauge-wrapper {
-    background-position-x: -928px;
+    background-position: -928px 0px;
 }
 
 .social-twitter-linear-gauge-wrapper {
-    background-position-x: -762px;
+    background-position: -762px 0px;
 }
 
 .social-facebook-linear-gauge-wrapper {
-    background-position-x: -552px;
+    background-position: -552px 0px;
 }
 
 
@@ -183,7 +180,7 @@
         font-weight: bold;
     }
 
-    
+
     #top-artists-tabstrip .k-link,
     #top-songs-tabstrip .k-link {
         background: none;
@@ -200,24 +197,21 @@
         background: #EF8549;
     }
 
-#top-songs-tabstrip .k-item:first-of-type,
-#top-artists-tabstrip .k-item:first-of-type
-{
-    -webkit-border-radius: 5px 0px 0px 5px;
-    border-radius: 5px 0px 0px 5px;
-}
+    #top-songs-tabstrip .k-item:first-of-type,
+    #top-artists-tabstrip .k-item:first-of-type {
+        -webkit-border-radius: 5px 0px 0px 5px;
+        border-radius: 5px 0px 0px 5px;
+    }
 
 
-#top-songs-tabstrip .k-item:last-of-type,
-#top-artists-tabstrip .k-item:last-of-type
-{
-    -webkit-border-radius: 0px 5px 5px 0px;
-    border-radius: 0px 5px 5px 0px;
-}
+    #top-songs-tabstrip .k-item:last-of-type,
+    #top-artists-tabstrip .k-item:last-of-type {
+        -webkit-border-radius: 0px 5px 5px 0px;
+        border-radius: 0px 5px 5px 0px;
+    }
 
 
 .radial-gauge-container {
-    height: 250px;
     display: inline-block;
     margin: 1%;
     background-image: url("../img/record-gauge-home.png");

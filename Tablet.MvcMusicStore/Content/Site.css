@@ -37,7 +37,6 @@ h1 {
     font-size: 2.5em;
     color: white;
     font-weight: bold;
-    width: 450px;
     display: inline-block;
     float: left;
     font-style: italic;
@@ -376,11 +375,22 @@ h2 {
     /* Styles */
 
     #main-header {
-        width: 80%;
+        width: 100%;
     }
 
     .main-title {
         font-size: 2em;
-        width: 350px;
+        margin: 10px 0 0 125px;
     }
+}
+
+
+@media only screen and (min-width : 320px) and (max-width : 768px) {
+
+    .main-title {
+        line-height: 40px;
+        margin: 10px 0 0 125px;
+        font-size: 1.5em;
+    }
+
 }

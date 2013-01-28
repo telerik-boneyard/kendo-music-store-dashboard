@@ -75,7 +75,7 @@
 }
 
 .chart-type-line-selected {
-    background-position: -30px  2px;
+    background-position: -30px 2px;
 }
 
 .chart-type-column-selected {
@@ -170,7 +170,6 @@
 
 
 #genre-sales {
-    height: 300px;
     width: 80%;
     margin: 10px auto;
     display: block;
@@ -253,4 +252,23 @@
     }
 }
 
+@media only screen and (min-width : 320px) and (max-width : 768px) {
+
+    #genre-sales {
+        width: 90%;
+    }
+
+    .half-chart-wrapper {
+        width: 49%;
+        margin: 0;
+    }
+
+    .half-width-chart {
+        width: 80%;
+    }
+
+}
+
 /* End Sales View*/
+
+

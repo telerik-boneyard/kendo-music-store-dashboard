@@ -169,6 +169,7 @@ function CreateGauge(selector, value, min, max) {
 
 function UpdateGauges() {
     //fetch new gauge data
+
     var gaugeValueDataSource = new kendo.data.DataSource({
         transport: {
             read: 'api/sales/gauges'
@@ -185,11 +186,14 @@ function UpdateGauges() {
             ApplyGaugeDelta('.visitors-per-hour', data.items[0].Visitors);
         }
     });
+
     gaugeValueDataSource.read();
 }
 
 function ApplyGaugeDelta(selector, delta) {
-    var gauge = $(selector).data('kendoRadialGauge');
-    var value = gauge.value();
+
+    var gauge = $(selector).data('kendoRadialGauge'),
+        value = (gauge ? gauge.value() : 0);
+
     gauge.value(value + delta);
 }
