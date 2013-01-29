@@ -1,5 +1,6 @@
 ﻿var defaultGaugeMin = 100,
-    defaultGaugeMax = 400;
+    defaultGaugeMax = 400,
+    valueInterval;
 
 
 function createMainView() {
@@ -11,7 +12,7 @@ function createMainView() {
     displayTopAlbums();
     CreateGauges();
     
-    setInterval(UpdateGauges, 5000);
+    valueInterval = setInterval(UpdateGauges, 5000);
 
 };
 
@@ -193,7 +194,16 @@ function UpdateGauges() {
 function ApplyGaugeDelta(selector, delta) {
 
     var gauge = $(selector).data('kendoRadialGauge'),
-        value = (gauge ? gauge.value() : 0);
+        value = 0;
 
-    gauge.value(value + delta);
+    if (gauge) {
+
+        value = gauge.value();
+
+        gauge.value(value + delta);
+
+    } else {
+        clearInterval(valueInterval);
+    }
+
 }
