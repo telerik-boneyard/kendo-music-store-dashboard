@@ -10,6 +10,8 @@
         $(".sales-album, .nav-sales").click(function(e) {
             e.preventDefault();
             e.stopPropagation();
+
+            clearInterval(valueInterval);
             window.location = "#/sales";
 
         });
@@ -17,6 +19,8 @@
         $(".social-album, .nav-social").click(function(e) {
             e.preventDefault();
             e.stopPropagation();
+
+            clearInterval(valueInterval);
             window.location = "#/social";
 
         });
