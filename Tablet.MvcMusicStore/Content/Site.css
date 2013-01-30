@@ -55,9 +55,9 @@ h1 {
     vertical-align: middle;
 }
 
-    /*.main-nav-item-selected {
-    background: #332E32;
-}*/
+.main-nav-item-selected {
+    background: rgba(255,255,255,.2);
+}
 
     .main-nav-item span {
         float: left;
