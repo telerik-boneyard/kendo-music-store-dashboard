@@ -347,7 +347,6 @@
     <Content Include="img\header-nav-icons.png" />
     <Content Include="humans.txt" />
     <Content Include="img\Header_Icons_final.png" />
-    <Content Include="img\kendo-logo.png" />
     <Content Include="img\kendo-ui-logo.png" />
     <Content Include="img\line-chart.png" />
     <Content Include="img\nav-icons-36.png" />
@@ -359,7 +358,7 @@
     <Content Include="img\social-icons.png" />
     <Content Include="img\social-logos.png" />
     <Content Include="img\sprite.png" />
-    <Content Include="img\telerik-logo.png" />
+    <Content Include="img\telerik-logo-transparent.png" />
     <Content Include="kendo-music-pinned-tile.png" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />
     <Content Include="Scripts\kendo.all.min.js" />
