@@ -111,9 +111,9 @@
     <Compile Include="Controllers\Api\SalesController.cs" />
     <Compile Include="Controllers\Api\SocialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Content Include="app\main-view.js" />
-    <Content Include="app\sales-view.js" />
-    <Content Include="app\social-view.js" />
+    <Content Include="js\debug\main-view.js" />
+    <Content Include="js\debug\sales-view.js" />
+    <Content Include="js\debug\social-view.js" />
     <Content Include="Content\home-view.css" />
     <Content Include="Content\sales-view.css" />
     <Content Include="Content\social-view.css" />
@@ -271,7 +271,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\app.js" />
+    <Content Include="js\debug\app.js" />
     <Content Include="app\views\main.html" />
     <Content Include="app\views\sales.html" />
     <Content Include="app\views\social.html" />
@@ -359,11 +359,9 @@
     <Content Include="img\social-logos.png" />
     <Content Include="img\sprite.png" />
     <Content Include="img\telerik-logo-transparent.png" />
+    <Content Include="js\libs\jquery-2.0.0.min.js" />
+    <Content Include="js\libs\kendo.web.min.js" />
     <Content Include="kendo-music-pinned-tile.png" />
-    <Content Include="Scripts\jquery-1.8.3.min.js" />
-    <Content Include="Scripts\kendo.all.min.js" />
-    <Content Include="Scripts\KineticScroll.js" />
-    <Content Include="Scripts\sammy-latest.min.js" />
     <Content Include="Unity.WebAPI.README.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -382,7 +380,6 @@
   <ItemGroup>
     <Folder Include="app\models\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\debug\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

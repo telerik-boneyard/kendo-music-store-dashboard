@@ -4,6 +4,8 @@
 
 (function () {
     //Instantiate Sammy Single Page App...
+
+    /*
     var app = $.sammy('#main', function() {
 
         //Wiring up handlers for touch menu buttons...
@@ -82,9 +84,56 @@
 
     });
 
+    */
+
+    /*
     $(function() {
         $(document).data("kendoSkin", "uniform");
         app.run('#/');
+
+    });
+
+    */
+
+    var router = new kendo.Router();
+
+    router.route("/", function () {
+        console.log("home");
+    });
+
+    router.route("/sales", function () {
+        console.log("sales");
+    });
+
+    router.route("/social", function () {
+        console.log("social");
+    });
+
+    router.start();
+
+    router.navigate("/");
+
+    $(".social-album, .nav-social").click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+//        clearInterval(valueInterval);
+        router.navigate("/social");
+
+    });
+
+    $(".charts-album, .nav-music").click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        router.navigate("/sales");
+
+    });
+
+    $("#main-header, .main-header-pennant").click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        router.navigate("/");
 
     });
 
