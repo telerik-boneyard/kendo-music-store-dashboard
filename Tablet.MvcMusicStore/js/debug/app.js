@@ -2,140 +2,89 @@
 
 "use strict";
 
-(function () {
-    //Instantiate Sammy Single Page App...
+(function (window, undefined) {
 
-    /*
-    var app = $.sammy('#main', function() {
+    var musicDashboard = {
 
-        //Wiring up handlers for touch menu buttons...
-        $(".sales-album, .nav-sales").click(function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+        router: undefined,
 
-            clearInterval(valueInterval);
-            window.location = "#/sales";
+        setup: function () {
 
-        });
+            this.router = new kendo.Router();
 
-        $(".social-album, .nav-social").click(function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+            this.setupRoutes();
+            this.bindNavigation();
 
-            clearInterval(valueInterval);
-            window.location = "#/social";
+            this.router.start();
 
-        });
 
-        $(".charts-album, .nav-music").click(function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.location = "#/";
+        },
 
-        });
+        setupRoutes: function () {
 
-        $("#main-header, .main-header-pennant").click(function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.location = "#/";
+            if (this.router) {
 
-        });
+                this.router.route("/", function () {
+                    console.log("home");
+                });
 
-        //Wiring up sammy routes...
-        this.get('#/', function(context) {
-            this.partial('app/views/main.html?v=1', null, function() {
+                this.router.route("/sales", function () {
+                    console.log("sales");
+                });
 
-                createMainView();
+                this.router.route("/social", function () {
+                    console.log("social");
+                });
 
-                $(".main-nav-item-selected").removeClass("main-nav-item-selected");
-                $(".main-nav-item-icon-selected").removeClass("main-nav-item-icon-selected");
-                $(".nav-music-icon").addClass("main-nav-item-icon-selected");
-                $(".nav-music").addClass("main-nav-item-selected");
+            }
 
-            });
-        });
+        },
 
-        this.get('#/social', function(context) {
-            this.partial('app/views/social.html?v=1', null, function() {
+        bindNavigation: function () {
 
-                createSocialView();
+            if (this.router) {
 
-                $(".main-nav-item-selected").removeClass("main-nav-item-selected");
-                $(".main-nav-item-icon-selected").removeClass("main-nav-item-icon-selected");
-                $(".nav-social-icon").addClass("main-nav-item-icon-selected");
-                $(".nav-social").addClass("main-nav-item-selected");
+                $(".social-album, .nav-social").click(function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
 
-            });
-        });
+                    //        clearInterval(valueInterval);
+                    router.navigate("/social");
 
-        this.get('#/sales', function(context) {
+                });
 
-            this.partial('app/views/sales.html?v=1.1', null, function() {
+                $(".charts-album, .nav-music").click(function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
 
-                createSalesView();
+                    router.navigate("/sales");
 
-                $(".main-nav-item-selected").removeClass("main-nav-item-selected");
-                $(".main-nav-item-icon-selected").removeClass("main-nav-item-icon-selected");
-                $(".nav-sales-icon").addClass("main-nav-item-icon-selected");
-                $(".nav-sales").addClass("main-nav-item-selected");
+                });
 
-            });
-        });
+                $("#main-header, .main-header-pennant").click(function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    router.navigate("/");
 
-    });
+                });
 
-    */
+            }
 
-    /*
-    $(function() {
-        $(document).data("kendoSkin", "uniform");
-        app.run('#/');
+        }
 
-    });
+    };
 
-    */
 
-    var router = new kendo.Router();
 
-    router.route("/", function () {
-        console.log("home");
-    });
 
-    router.route("/sales", function () {
-        console.log("sales");
-    });
 
-    router.route("/social", function () {
-        console.log("social");
-    });
+    return (window.musicDashboard = musicDashboard);
 
-    router.start();
+}(window));
 
-    router.navigate("/");
 
-    $(".social-album, .nav-social").click(function (e) {
-        e.preventDefault();
-        e.stopPropagation();
+musicDashboard.setup();
 
-//        clearInterval(valueInterval);
-        router.navigate("/social");
 
-    });
 
-    $(".charts-album, .nav-music").click(function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        router.navigate("/sales");
-
-    });
-
-    $("#main-header, .main-header-pennant").click(function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        router.navigate("/");
-
-    });
-
-})();
 
