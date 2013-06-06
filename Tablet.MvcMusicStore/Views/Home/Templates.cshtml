@@ -1,0 +1,43 @@
+﻿<script id="salesToolTip" type="text/x-kendo-template">        
+        <div class="record-tooltip">
+            <h3>#= kendo.format("{0:c}", dataItem.Sales) #</h3>
+            <p>#= kendo.format("{0:d}", dataItem.Date) #</p>
+        </div>
+</script>
+
+<script id="genreSalesToolTipTemplate" type="text/x-kendo-template">
+        <div class="record-tooltip">
+            <h3>#= dataItem["Genre"] #</h3>
+            <p>#= value # (Singles)</p>
+            <p>#= kendo.format("{0:d}", dataItem.Date) #</p>
+        </div>
+</script>
+
+<script id="genreSearchesToolTipTemplate" type="text/x-kendo-template">
+        <div class="record-tooltip">
+            <h3>#= dataItem["Searches"] # Searches</h3>
+            <p>#= kendo.format("{0:d}", dataItem.Date) #</p>
+        </div>
+</script>
+
+
+<script type="text/x-kendo-tmpl" id="top-single-template">
+    <div class="top-single-song-list-item">
+        <img src="${ArtUrl}" alt="${Name}" width="100px" height="100px" />
+        <div class="album-list-item-wrapper">
+            <div class="album-list-title">${Name}</div>
+            <div class="album-list-subtitle">${AlbumName}</div>
+            <div class="album-list-price">${kendo.toString(Price, 'c')}</div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-kendo-tmpl" id="top-album-template">
+     <div class="top-album-list-item">
+        <img src="${ArtUrl}" alt="${Name}" width="100px" height="100px" />
+        <span class="album-list-item-wrapper">
+            <div class="album-list-title">${Name}</div>
+            <div class="album-list-price">${kendo.toString(Price, 'c')}</div>
+        </span>
+    </div>
+</script>

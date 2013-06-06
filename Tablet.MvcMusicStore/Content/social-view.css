@@ -91,7 +91,7 @@
     height: 430px;
     width: 130px;
     padding: 80px 0 0 0;
-    margin: 0 4.5%;
+    margin: 0 3.5%;
 }
 
 
@@ -242,7 +242,7 @@
 }
 
 .social-linear-gauges {
-    width: 60%;
+    width: 65%;
 }
 
 @media only screen and (min-width : 1024px) and (max-width : 1200px) {

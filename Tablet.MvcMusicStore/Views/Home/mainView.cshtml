@@ -1,0 +1,63 @@
+﻿<script id="mainview" type="text/x-kendo-template">
+
+    <section id="home-view">
+
+            <section class="store-tall-tabs">
+                <span class="big-sales-tab today-sales">
+                    <div class="big-sales-tab-title">TODAY</div>
+                    <div class="big-sales-tab-amount"><span data-role="widget" data-bind="text: today"></span></div>
+                </span>
+                <span class="big-sales-tab this-week-sales">
+                    <div class="big-sales-tab-title">THIS WEEK</div>
+                    <div class="big-sales-tab-amount"><span data-bind="text: week"></span></div>
+                </span>
+                <span class="big-sales-tab this-month-sales">
+                    <div class="big-sales-tab-title">THIS MONTH</div>
+                    <div class="big-sales-tab-amount"><span data-bind="text: month"></span></div>
+                </span>
+                <span class="big-sales-tab last-month-sales">
+                    <div class="big-sales-tab-title">LAST MONTH</div>
+                    <div class="big-sales-tab-amount"><span data-bind="text: lastMonth"></span></div>
+                </span>
+
+            </section>
+            <section class="billboard-charts">
+                <div class="top-singles-list">
+                    <h3 class="list-title">TOP <span class="italic">SINGLES</span></h3>
+                    <div id="topSinglesListView"></div>
+                </div>
+                <div class="top-singles-list">
+                    <h3 class="list-title">TOP <span class="italic">ALBUMS</span></h3>
+                    <div id="topAlbumsListView"></div>
+                </div>
+            </section>
+
+            <section class="main-hero-wrapper">
+                <div class="gauge-container">
+                    <div class="albums-per-hour home-gauge-box"></div>
+                    <header>
+                        <h3 class="gauge-title"><span class="orange">Albums</span>/Hr</h3>
+                    </header>
+                </div>
+                <div class="gauge-container">
+                    <div class="singles-per-hour home-gauge-box"></div>
+                    <header>
+                        <h3 class="gauge-title"><span class="orange">Singles</span>/Hr</h3>
+                    </header>
+                </div>
+                <div class="gauge-container">
+                    <div class="new-customers-per-hour home-gauge-box"></div>
+                    <header>
+                        <h3 class="gauge-title"><span class="orange">New Customers</span>/Hr</h3>
+                    </header>
+                </div>
+                <div class="gauge-container">
+                    <div class="visitors-per-hour home-gauge-box"></div>
+                    <header>
+                        <h3 class="gauge-title"><span class="orange">Visitors</span>/Hr</h3>
+                    </header>
+                </div>
+            </section>
+        </section>
+
+</script>

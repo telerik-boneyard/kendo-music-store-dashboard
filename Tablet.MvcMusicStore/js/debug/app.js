@@ -6,6 +6,7 @@
 
     var musicDashboard = {
 
+        //kendoui router object
         router: undefined,
         defaultGaugeMin: 100,
         defaultGaugeMax: 400,
@@ -16,74 +17,124 @@
 
             this.router = new kendo.Router();
 
+            this.setupViews();
             this.setupRoutes();
             this.bindNavigation();
+            this.setupSalesUrls();
 
             this.router.start();
 
+        },
+
+        mainView: undefined,
+        salesView: undefined,
+        socialView: undefined,
+
+        //define views for KendoUI
+        setupViews: function () {
+
+            var that = this,
+                sv = document.querySelector("#salesview"),
+                socv = document.querySelector("#socialView"),
+                mv = document.querySelector("#mainview");
+
+            //outerHTML
+            that.salesView = new kendo.View(sv.outerHTML);
+            that.socialView = new kendo.View(socv.outerHTML);
+            that.mainView = new kendo.View(mv.outerHTML);
 
         },
 
+        //defined Routes for KendoUI
         setupRoutes: function () {
 
-            if (this.router) {
+            var that = this;
 
-                this.router.route("/", function () {
+            if (that.router) {
+
+                that.router.route("/", function () {
+
                     console.log("home");
 
+                    //destroy other views or they will be markup artifacts on the screen
+                    that.salesView.destroy();
+                    that.socialView.destroy();
+                    
                     $(".main-nav-item-selected").removeClass("main-nav-item-selected");
                     $(".main-nav-item-icon-selected").removeClass("main-nav-item-icon-selected");
                     $(".nav-music-icon").addClass("main-nav-item-icon-selected");
                     $(".nav-music").addClass("main-nav-item-selected");
+
+                    that.createMainView();
+
                 });
 
-                this.router.route("/sales", function () {
+                that.router.route("/sales", function () {
                     console.log("sales");
+
+                    that.mainView.destroy();
+                    that.socialView.destroy();
+
+                    //destroy the main view gauge update callback interval
+                    clearInterval(that.valueInterval);
 
                     $(".main-nav-item-selected").removeClass("main-nav-item-selected");
                     $(".main-nav-item-icon-selected").removeClass("main-nav-item-icon-selected");
                     $(".nav-sales-icon").addClass("main-nav-item-icon-selected");
                     $(".nav-sales").addClass("main-nav-item-selected");
+
+                    that.createSalesView();
+
                 });
 
-                this.router.route("/social", function () {
+                that.router.route("/social", function () {
                     console.log("social");
+
+                    that.mainView.destroy();
+                    that.salesView.destroy();
+
+                    clearInterval(that.valueInterval);
 
                     $(".main-nav-item-selected").removeClass("main-nav-item-selected");
                     $(".main-nav-item-icon-selected").removeClass("main-nav-item-icon-selected");
                     $(".nav-social-icon").addClass("main-nav-item-icon-selected");
                     $(".nav-social").addClass("main-nav-item-selected");
+
+                    that.createSocialView();
+
                 });
 
             }
 
         },
 
+        //add event handlers for main navigation
         bindNavigation: function () {
 
-            if (this.router) {
+            var that = this;
+
+            if (that.router) {
 
                 $(".social-album, .nav-social").click(function (e) {
                     e.preventDefault();
                     e.stopPropagation();
 
-                    //        clearInterval(valueInterval);
-                    router.navigate("/social");
+                    that.router.navigate("/social");
 
                 });
 
-                $(".charts-album, .nav-music").click(function (e) {
+                $(".charts-album, .nav-sales").click(function (e) {
                     e.preventDefault();
                     e.stopPropagation();
 
-                    router.navigate("/sales");
+                    that.router.navigate("/sales");
 
                 });
 
-                $("#main-header, .main-header-pennant").click(function (e) {
+                $("#main-header, .nav-music").click(function (e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    router.navigate("/");
+                    that.router.navigate("/");
 
                 });
 
@@ -96,14 +147,28 @@
 
         createMainView: function () {
 
+            console.log("createMainView");
+
+            var that = this;
+
+            that.mainView.render("#main");
+
             $(".main-title").text("Music Store Sales");
 
-            this.displayMainViewTotals();
+            //      this.displayMainViewTotals();
             this.displayTopSingles();
             this.displayTopAlbums();
             this.CreateGauges();
 
-            this.valueInterval = setInterval(this.UpdateGauges, 5000);
+            if (!this.valueInterval) {
+                this.valueInterval = setInterval(function () {
+
+                    that.UpdateGauges.call(that);
+
+                }, 5000);
+            }
+            
+            console.log(this.valueInterval);
 
         },
 
@@ -134,17 +199,18 @@
         displayTopSingles: function () {
 
             var dataSource = new kendo.data.DataSource({
-                transport: {
-                    read: {
-                        url: "api/top/tracks",
-                        dataType: "json"
-                    }
-                }
-            });
+                                    transport: {
+                                        read: {
+                                            url: "api/top/tracks",
+                                            dataType: "json"
+                                        }
+                                    }
+                                }),
+                template = kendo.template($("#top-single-template").html());
 
             $("#topSinglesListView").kendoListView({
                 dataSource: dataSource,
-                template: kendo.template($("#top-single-template").html()),
+                template: template,
                 dataBound: function (e) {
                     // handle event
                     $(".top-single-song-list-item").on("click", function (e) {
@@ -194,10 +260,10 @@
 
         CreateGauges: function () {
 
-            CreateGauge(".albums-per-hour", parseInt(Math.floor((Math.random() * defaultGaugeMax) + 1), 10));
-            CreateGauge(".singles-per-hour", parseInt(Math.floor((Math.random() * defaultGaugeMax) + 1), 10));
-            CreateGauge(".new-customers-per-hour", parseInt(Math.floor((Math.random() * defaultGaugeMax) + 1), 10));
-            CreateGauge(".visitors-per-hour", parseInt(Math.floor((Math.random() * defaultGaugeMax) + 1), 10));
+            this.CreateGauge(".albums-per-hour", parseInt(Math.floor((Math.random() * this.defaultGaugeMax) + 1), 10));
+            this.CreateGauge(".singles-per-hour", parseInt(Math.floor((Math.random() * this.defaultGaugeMax) + 1), 10));
+            this.CreateGauge(".new-customers-per-hour", parseInt(Math.floor((Math.random() * this.defaultGaugeMax) + 1), 10));
+            this.CreateGauge(".visitors-per-hour", parseInt(Math.floor((Math.random() * this.defaultGaugeMax) + 1), 10));
         },
 
         CreateGauge: function (selector, value, min, max) {
@@ -207,8 +273,8 @@
             }
 
             value = value || 0;
-            min = min || defaultGaugeMin;
-            max = max || defaultGaugeMax;
+            min = min || this.defaultGaugeMin;
+            max = max || this.defaultGaugeMax;
 
             $(selector).kendoRadialGauge({
 
@@ -228,8 +294,8 @@
                     majorTicks: {
                         color: "#fff"
                     },
-                    max: defaultGaugeMax,
-                    min: defaultGaugeMin,
+                    max: this.defaultGaugeMax,
+                    min: this.defaultGaugeMin,
                     ranges: [
                         {
                             from: 100,
@@ -261,7 +327,8 @@
         UpdateGauges: function () {
             //fetch new gauge data
 
-            var gaugeValueDataSource = new kendo.data.DataSource({
+            var that = this,
+                gaugeValueDataSource = new kendo.data.DataSource({
                 transport: {
                     read: 'api/sales/gauges'
                 },
@@ -271,14 +338,14 @@
                     }
                 },
                 change: function (data) {
-                    ApplyGaugeDelta('.albums-per-hour', data.items[0].Albums);
-                    ApplyGaugeDelta('.singles-per-hour', data.items[0].Singles);
-                    ApplyGaugeDelta('.new-customers-per-hour', data.items[0].Customers);
-                    ApplyGaugeDelta('.visitors-per-hour', data.items[0].Visitors);
+                    that.ApplyGaugeDelta('.albums-per-hour', data.items[0].Albums);
+                    that.ApplyGaugeDelta('.singles-per-hour', data.items[0].Singles);
+                    that.ApplyGaugeDelta('.new-customers-per-hour', data.items[0].Customers);
+                    that.ApplyGaugeDelta('.visitors-per-hour', data.items[0].Visitors);
                 }
             });
 
-            this.gaugeValueDataSource.read();
+            gaugeValueDataSource.read();
         },
 
         ApplyGaugeDelta: function (selector, delta) {
@@ -293,7 +360,7 @@
                 gauge.value(value + delta);
 
             } else {
-                clearInterval(valueInterval);
+                clearInterval(this.valueInterval);
             }
 
         },
@@ -307,13 +374,27 @@
         salesGenrePeriod: 'weekly',
         searchesGenrePeriod: 7,
         salesChartType: "line",
-        totalSalesUrl: "api/sales/TotalSales/" + salesPeriod,
-        albumSales: "api/sales/AlbumSales/" + salesPeriod,
-        singleSales: "api/sales/SingleSales/" + salesPeriod,
-        totalDownloads: "api/sales/TotalDownloads/" + salesPeriod,
-        ticketSales: "api/sales/TicketSales/" + salesPeriod,
+        totalSalesUrl: "api/sales/TotalSales/" + this.salesPeriod,
+        albumSales: "api/sales/AlbumSales/" + this.salesPeriod,
+        singleSales: "api/sales/SingleSales/" + this.salesPeriod,
+        totalDownloads: "api/sales/TotalDownloads/" + this.salesPeriod,
+        ticketSales: "api/sales/TicketSales/" + this.salesPeriod,
+
+        setupSalesUrls: function () {
+
+            this.totalSalesUrl = "api/sales/TotalSales/" + this.salesPeriod;
+            this.albumSales = "api/sales/AlbumSales/" + this.salesPeriod;
+            this.singleSales = "api/sales/SingleSales/" + this.salesPeriod;
+            this.totalDownloads = "api/sales/TotalDownloads/" + this.salesPeriod;
+            this.ticketSales = "api/sales/TicketSales/" + this.salesPeriod;
+
+        },
 
         //sales methods
+
+        salesByGenreChartDataSource: undefined,
+        searchesByGenreChartDataSource: undefined,
+
         setSalesChart: function (options) {
 
             options = $.extend({}, {
@@ -550,12 +631,12 @@
             };
         },
 
-        updateSalesChartData: function (saleUrl, title) {
+        updateSalesChartData: function (saleUrl, title, that) {
 
             $(".sales-chart-options-item-selected").removeClass("sales-chart-options-item-selected");
             $(this).addClass("sales-chart-options-item-selected");
 
-            setSalesChart({
+            that.setSalesChart({
                 title: {
                     text: title || "Store Sales",
                     color: "#fff"
@@ -597,9 +678,9 @@
 
         },
 
-        changeChartType: function (chartSelector, parentChartType) {
+        changeChartType: function (chartSelector, parentChartType, that) {
 
-            this.removeSelectedGenreSalesType(parentChartType);
+            that.removeSelectedGenreSalesType(parentChartType);
 
             var $this = $(this),
                 chartType = $this.data("charttype"),
@@ -633,19 +714,68 @@
             var that = this,
                 get_vars = that.parseQuerystring();
 
+            that.salesByGenreChartDataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: "api/salesbygenre/" + that.salesGenrePeriod,
+                        dataType: "json"
+                    }
+                },
+                group: { field: "Genre" },
+                sort: {
+                    field: "Date",
+                    dir: "asc"
+                },
+                schema: {
+                    model: {
+                        fields: {
+                            Date: {
+                                type: "date"
+                            }
+                        }
+                    }
+                }
+            });
+
+            that.searchesByGenreChartDataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: "api/searchesbygenre/" + that.salesGenrePeriod,
+                        dataType: "json"
+                    }
+                },
+                group: { field: "Genre" },
+                sort: {
+                    field: "Date",
+                    dir: "asc"
+                },
+                schema: {
+                    model: {
+                        fields: {
+                            Date: {
+                                type: "date"
+                            },
+                            Genre: {type: "string"}
+                        }
+                    }
+                }
+            });
+
+            that.salesView.render("#main");
+
             if (get_vars["target"] === "album") {
 
                 that.albumSales = "api/sales/AlbumSales/" + that.salesPeriod;
 
                 that.updateSalesChartData.call(document.querySelector(".sales-chart-options-albums"),
-                        that.albumSales, "Store Album Sales");
+                        that.albumSales, "Store Album Sales", that);
 
             } else if (get_vars["target"] === "singles") {
 
                 that.singleSales = "api/sales/SingleSales/" + that.salesPeriod;
 
                 that.updateSalesChartData.call(document.querySelector(".sales-chart-options-singles"),
-                        that.singleSales, "Store Single Sales");
+                        that.singleSales, "Store Single Sales", that);
 
             } else {
                 that.setSalesChart();
@@ -711,7 +841,7 @@
 
                 that.albumSales = "api/sales/AlbumSales/" + that.salesPeriod;
 
-                that.updateSalesChartData.call(this, that.albumSales, "Store Album Sales");
+                that.updateSalesChartData.call(this, that.albumSales, "Store Album Sales", that);
 
             });
 
@@ -721,7 +851,7 @@
 
                 that.singleSales = "api/sales/SingleSales/" + that.salesPeriod;
 
-                that.updateSalesChartData.call(this, that.singleSales, "Store Single Sales");
+                that.updateSalesChartData.call(this, that.singleSales, "Store Single Sales", that);
 
             });
 
@@ -731,7 +861,7 @@
 
                 that.totalSalesUrl = "api/sales/TotalSales/" + that.salesPeriod;
 
-                that.updateSalesChartData.call(this, that.totalSalesUrl, "Store Total Sales");
+                that.updateSalesChartData.call(this, that.totalSalesUrl, "Store Total Sales", that);
 
             });
 
@@ -741,7 +871,7 @@
 
                 that.totalDownloads = "api/sales/TotalDownloads/" + that.salesPeriod;
 
-                that.updateSalesChartData.call(this, that.totalDownloads, "Store Downloads");
+                that.updateSalesChartData.call(this, that.totalDownloads, "Store Downloads", that);
 
             });
 
@@ -751,7 +881,7 @@
 
                 that.ticketSales = "api/sales/TicketSales/" + that.salesPeriod;
 
-                that.updateSalesChartData.call(this, that.ticketSales, "Store Ticket Sales");
+                that.updateSalesChartData.call(this, that.ticketSales, "Store Ticket Sales", that);
 
             });
 
@@ -759,7 +889,7 @@
 
                 e.preventDefault();
 
-                that.changeChartType.call(this, ".sales-by-genre-chart", ".change-genre-sales-chart-type");
+                that.changeChartType.call(this, ".sales-by-genre-chart", ".change-genre-sales-chart-type", that);
 
             });
 
@@ -767,7 +897,7 @@
 
                 e.preventDefault();
 
-                that.changeChartType.call(this, ".searches-by-genre-chart", ".genre-searches-chart-type");
+                that.changeChartType.call(this, ".searches-by-genre-chart", ".genre-searches-chart-type", that);
 
             });
 
@@ -787,31 +917,33 @@
 
         createSocialView: function () {
 
+            this.socialView.render("#main");
+
             $(".main-title").text("Social Networking");
 
-            var defaultGauge = {
+            var that = this,
+                defaultGauge = {
 
-                pointer: {
-                    color: "#EF8549",
-                    shape: "arrow"
+                    pointer: {
+                        color: "#EF8549",
+                        shape: "arrow"
+                    },
+
+                    scale: {
+                        majorUnit: 10,
+                        minorUnit: 5,
+                        startAngle: -30,
+                        endAngle: 210,
+                        labels: {
+                            color: "#fff"
+                        },
+                        majorTicks: {
+                            color: "#fff"
+                        }
+                    }
                 },
 
-                scale: {
-                    majorUnit: 10,
-                    minorUnit: 5,
-                    startAngle: -30,
-                    endAngle: 210,
-                    labels: {
-                        color: "#fff"
-                    },
-                    majorTicks: {
-                        color: "#fff"
-                    }
-                }
-            },
-
             radialGauge = $.extend({}, defaultGauge, { pointer: { color: "#fff" } });
-
 
             $("#social-public-awareness-gauge").kendoRadialGauge(radialGauge);
             $("#social-new-owners-gauge").kendoLinearGauge(defaultGauge);
@@ -928,7 +1060,7 @@
             return series;
         },
 
-        changeChartData: function () {
+        changeChartData: function (that) {
 
             var selected = $(this).data('selected'),
                 $this = $(this),
@@ -944,40 +1076,69 @@
                 $(".social-tile-title", $this).addClass("social-tile-title-selected");
             }
 
-            chart.options.valueAxis = buildSocialStatsValueAxis();
-            chart.options.series = buildSocialStatsSeries();
+            chart.options.valueAxis = that.buildSocialStatsValueAxis();
+            chart.options.series = that.buildSocialStatsSeries();
             chart.refresh();
 
         },
 
         createSocialChart: function () {
 
-            var that = this;
+            var that = this,
+                socialAwarenessDataSource = new kendo.data.DataSource({
+                                                transport: {
+                                                    read: 'api/social/awareness'
+                                                },
+                                                schema: {
+                                                    data: function (response) {
+                                                        //need to wrap this as an array for change event...
+                                                        return [response];
+                                                    }
+                                                },
+                                                change: function (data) {
+                                                    $('#social-public-awareness-gauge')
+                                                        .data("kendoRadialGauge")
+                                                        .value(data.items[0].Radial);
 
-            kendo.bind($('#social-view'), {});
+                                                    $('#social-new-owners-gauge')
+                                                       .data("kendoLinearGauge")
+                                                       .value(data.items[0].Linear);
+                                                }
+                }),
 
-            var socialAwarenessDataSource = new kendo.data.DataSource({
-                transport: {
-                    read: 'api/social/awareness'
-                },
-                schema: {
-                    data: function (response) {
-                        //need to wrap this as an array for change event...
-                        return [response];
-                    }
-                },
-                change: function (data) {
-                    $('#social-public-awareness-gauge')
-                        .data("kendoRadialGauge")
-                        .value(data.items[0].Radial);
+                $socialSalesChart = $("#social-stats-chart"),
 
-                    $('#social-new-owners-gauge')
-                       .data("kendoLinearGauge")
-                       .value(data.items[0].Linear);
-                }
-            }),
+            //Need to clarify this with telerik...
+            //If I do a normal bound Im not able to select the first element,
+            //apparently a sync issue...
+            topArtists = new kendo.data.DataSource({
+                                        transport: {
+                                            read: 'api/top/artists'
+                                        },
+                                        change: function (result) {
+                                            $('#top-artists-tabstrip').kendoTabStrip(
+                                                {
+                                                    dataSource: result.items,
+                                                    autoBind: false,
+                                                    dataTextField: "Name",
+                                                    change: function () {
+                                                        var id = result.items[this.select().index()].Id;
+                                                        //re-fetch dependent datasource...
+                                                        topSongs.read({ artistId: id });
+                                                        that.socialStatsDataSource.read(
+                                                            { artistId: id, from: "1/1/2012", to: "12/31/2012" });
 
-                socialHeatDataSource = new kendo.data.DataSource({
+                                                        socialAwarenessDataSource.read({ artistId: id });
+
+                                                    }
+                                                }
+                                            ).data('kendoTabStrip').select(0);
+
+                                            console.log($('#top-artists-tabstrip').data('kendoTabStrip'));
+                                        }
+                                    }),
+
+            socialHeatDataSource = new kendo.data.DataSource({
                     transport: {
                         read: 'api/social/heat'
                     },
@@ -1006,73 +1167,88 @@
                     }
                 }),
 
-                topSongs = new kendo.data.DataSource({
-                transport: {
-                    read: 'api/top/tracks'
-                },
-                change: function (result) {
+            topSongs = new kendo.data.DataSource({
+                    transport: {
+                        read: 'api/top/tracks'
+                    },
+                    change: function (result) {
 
-                    $('#top-songs-tabstrip').kendoTabStrip(
-                       {
-                           dataSource: result.items,
-                           autoBind: false,
-                           dataTextField: "Name",
-                           change: function () {
-                               var selectedSong = result.items[this.select().index()];
-                               socialHeatDataSource.read(
-                                   {
-                                       artistId: selectedSong.ArtistId,
-                                       songId: selectedSong.SongId
-                                   }
-                               );
+                        $('#top-songs-tabstrip').kendoTabStrip(
+                           {
+                               dataSource: result.items,
+                               autoBind: false,
+                               dataTextField: "Name",
+                               change: function () {
+                                   var selectedSong = result.items[this.select().index()];
+                                   socialHeatDataSource.read(
+                                       {
+                                           artistId: selectedSong.ArtistId,
+                                           songId: selectedSong.SongId
+                                       }
+                                   );
+                               }
                            }
-                       }
-                   ).data('kendoTabStrip').select(0);
-                }
+                       ).data('kendoTabStrip').select(0);
+                    }
             });
 
-            //Need to clarify this with telerik...
-            //If I do a normal bound Im not able to select the first element,
-            //apparently a sync issue...
-            var topArtists = new kendo.data.DataSource({
+            that.socialStatsDataSource = new kendo.data.DataSource({
                 transport: {
-                    read: 'api/top/artists'
+                    read: {
+                        url: "api/social/stats/",
+                        dataType: "json"
+                    }
                 },
-                change: function (result) {
-                    $('#top-artists-tabstrip').kendoTabStrip(
-                        {
-                            dataSource: result.items,
-                            autoBind: false,
-                            dataTextField: "Name",
-                            change: function () {
-                                var id = result.items[this.select().index()].Id;
-                                //re-fetch dependent datasource...
-                                topSongs.read({ artistId: id });
-                                socialStatsDataSource.read(
-                                    { artistId: id, from: "1/1/2012", to: "12/31/2012" });
-
-                                that.socialAwarenessDataSource.read({ artistId: id });
-
+                sort: {
+                    field: "Date",
+                    dir: "asc"
+                },
+                schema: {
+                    model: {
+                        fields: {
+                            Date: {
+                                type: "date"
                             }
                         }
-                    ).data('kendoTabStrip').select(0);
-
-                    console.log($('#top-artists-tabstrip').data('kendoTabStrip'));
+                    }
                 }
             });
+
+            kendo.bind($('#social-view'), {});
 
             topArtists.read();
 
-            $('#social-stats-chart').kendoChart({
+            $socialSalesChart.kendoChart({
 
                 title: {
                     text: "Social Stats",
                     color: "#EF8549",
                     font: "30px Arial,Helvetica,sans-serif"
                 },
-                dataSource: socialStatsDataSource,
-                autoBind: false,
-                series: buildSocialStatsSeries(),
+                dataSource:{
+                    //transport: {
+                    //    read: {
+                    //        url: "api/social/stats/",
+                    //        dataType: "json"
+                    //    }
+                    //},
+                    sort: {
+                        field: "Date",
+                        dir: "asc"
+                    },
+                    schema: {
+                        model: {
+                            fields: {
+                                Date: {
+                                    type: "date"
+                                }
+                            }
+                        }
+                    }
+                },
+                    //that.socialStatsDataSource,
+         //       autoBind: false,
+                series: that.buildSocialStatsSeries(),
                 legend: {
                     position: "bottom",
                     labels: {
@@ -1096,21 +1272,18 @@
 
 
             $(window).on("resize orientationchange", function (e) {
-                $("#social-stats-chart").data("kendoChart").redraw();
+                $socialSalesChart.data("kendoChart").redraw();
             });
 
             $(".social-tile-wrapper").click(function (e) {
 
-                that.changeChartData.call(this);
+                that.changeChartData.call(this, that);
 
             });
 
         }
 
     };
-
-
-
 
 
     return (window.musicDashboard = musicDashboard);
