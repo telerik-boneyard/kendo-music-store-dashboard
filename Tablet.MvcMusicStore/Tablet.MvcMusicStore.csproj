@@ -307,6 +307,7 @@
     <Compile Include="Models\SalesRevenue.cs" />
     <Compile Include="Models\Track.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="js\app\main-view.js" />
     <Content Include="js\libs\kendo.all.min.js" />
     <Content Include="Views\Home\Templates.cshtml" />
     <Content Include="Views\Home\socialView.cshtml" />
