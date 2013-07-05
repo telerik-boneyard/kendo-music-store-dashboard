@@ -335,10 +335,6 @@
                 autoBind: false
             });
 
-            $(window).on("resize orientationchange", function (e) {
-                $socialSalesChart.data("kendoChart").redraw();
-            });
-
             $(".social-tile-wrapper").click(function (e) {
 
                 that.changeChartData.call(this, that);

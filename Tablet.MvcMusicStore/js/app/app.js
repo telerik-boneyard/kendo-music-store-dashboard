@@ -3,6 +3,7 @@
 "use strict";
 
 (function (window, $, kendo, undefined) {
+    var resizeTimer;
     var musicDashboard = {
 
         //kendoui router object
@@ -98,6 +99,18 @@
 
         }
     };
+
+    // redraw charts after a resize because they do not redraw themselves automatically.
+    // use a timer to trigger the actual redraw so that there isn't flickering as the user drags the window handle.
+    $(window).on("resize orientationchange", function (e) {
+        if (resizeTimer) {
+            window.clearTimeout(resizeTimer);
+        }
+        resizeTimer = window.setTimeout(function () {
+            $(".k-chart:not(.k-stockchart)").each(function () { $(this).data("kendoChart").redraw(); });
+            $(".k-stockchart").each(function () { $(this).data("kendoStockChart").redraw(); });
+        }, 400);
+    });
 
     return (window.musicDashboard = musicDashboard);
 

@@ -1,6 +1,5 @@
 ﻿(function ($, kendo, musicDashboard, undefined) {
     musicDashboard.salesViewLogic = {
-        //sales variables
         salesPeriod: 60,
         salesGenrePeriod: 'weekly',
         searchesGenrePeriod: 7,
@@ -12,16 +11,12 @@
         ticketSales: "api/sales/TicketSales/" + this.salesPeriod,
 
         setupSalesUrls: function () {
-
             this.totalSalesUrl = "api/sales/TotalSales/" + this.salesPeriod;
             this.albumSales = "api/sales/AlbumSales/" + this.salesPeriod;
             this.singleSales = "api/sales/SingleSales/" + this.salesPeriod;
             this.totalDownloads = "api/sales/TotalDownloads/" + this.salesPeriod;
             this.ticketSales = "api/sales/TicketSales/" + this.salesPeriod;
-
         },
-
-        //sales methods
 
         salesByGenreChartDataSource: undefined,
         searchesByGenreChartDataSource: undefined,
@@ -514,12 +509,6 @@
                 e.preventDefault();
                 that.changeChartType.call(this, ".searches-by-genre-chart", ".genre-searches-chart-type", that);
             });
-
-            $(window).on("resize orientationchange", function (e) {
-                $(".k-chart:not(.k-stockchart)").each(function () { $(this).data("kendoChart").redraw(); });
-                $(".k-stockchart").each(function () { $(this).data("kendoStockChart").redraw(); });
-            });
-
         }
     };
 }(window.jQuery, window.kendo, window.musicDashboard));
