@@ -177,9 +177,10 @@
 
 .half-chart-wrapper {
     width: 47%;
-    height: 380px;
+    height: auto;
     margin: 0 1%;
     border: solid 1px #525252;
+    -webkit-box-shadow: #686868 2px 2px;
     box-shadow: #686868 2px 2px;
     display: inline-block;
 }
@@ -252,7 +253,13 @@
     }
 }
 
-@media only screen and (min-width : 320px) and (max-width : 768px) {
+@media (max-width : 768px) {
+
+    .store-sales-chart-type
+    {
+        width:100%;
+        height:auto;
+    }
 
     #genre-sales {
         width: 90%;
@@ -264,7 +271,12 @@
     }
 
     .half-width-chart {
-        width: 80%;
+        width: 100%;
+    }
+
+    .chart-type-item
+    {
+        margin: 5px 2%;
     }
 
 }

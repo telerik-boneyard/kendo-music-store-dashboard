@@ -1,30 +1,27 @@
 ﻿/* Home View*/
 
 #home-header {
-}
-
-#home-header {
     display: block;
     clear: both;
 }
 
 #home-view {
-    width: 1000px;
     margin: auto;
+    width: auto;
 }
 
 .home-title {
     width: 200px;
+    height: 80px;
     background-image: url('../img/3_RecordsLogo.png');
     background-repeat: no-repeat;
-    height: 80px;
 }
 
 
 .home-header,
 .home-artist-list {
-    float: left;
     display: inline-block;
+    float: left;
 }
 
     .home-header h1 {
@@ -36,75 +33,75 @@
 
 .main-hero-wrapper {
     display: inline-block;
-    width: 300px;
+    float: left;
     margin: auto;
-    float:left;
+    width: 300px;
 }
 
 .home-artist-list {
-    height: 100px;
     float: left;
+    height: 100px;
 }
 
 .album-list-item-wrapper {
+    display: inline-block;
     width: 200px;
     height: 80px;
-    display: inline-block;
 }
 
 .album-list-subtitle,
 .album-list-price,
 .album-list-title {
-    vertical-align: top;
     margin: 0 15px;
-    font-size: 1.2em;
-    color: #747273;
     width: 180px;
     height: 1.2em;
+    color: #747273;
+    vertical-align: top;
+    font-size: 1.2em;
 }
 
 .album-list-title {
     overflow: hidden;
-    color:#eee;
+    color: #eee;
 }
 
 .album-list-price {
-    font-size: 1em;    
+    font-size: 1em;
 }
 
 .album-list-subtitle {
-    font-size: 1em;
     color: #666;
+    font-size: 1em;
 }
 
 
 .home-nav {
-    width: 300px;
     display: inline-block;
+    width: 300px;
     height: 100%;
     vertical-align: top;
 }
 
 .artist-nav {
+    margin: 50px 10px;
     width: 170px;
     height: 100px;
-    margin: 50px 10px;
-    background-image: #3f3f3f;
+    background-color: #3f3f3f;
 }
 
 .sales-album,
 .social-album,
 .charts-album {
+    display: block;
     overflow: hidden;
-    vertical-align: baseline;
-    line-height: 60px;
-    color: white;
-    font-size: 1.5em;
+    padding-left: 70px;
     width: 170px;
     height: 60px;
-    padding-left: 70px;
     background-repeat: no-repeat;
-    display: block;
+    color: white;
+    vertical-align: baseline;
+    font-size: 1.5em;
+    line-height: 60px;
 }
 
 .sales-album {
@@ -120,46 +117,45 @@
 }
 
 .gauge-container {
-    height: 250px;
     display: inline-block;
     margin: 0 40px;
-    background-image: url("../img/record-gauge-home.png");
-    background-repeat: no-repeat;
-    background-position: 0 15px;
     width: 225px;
+    height: 250px;
+    background-image: url("../img/record-gauge-home.png");
+    background-position: 0 15px;
+    background-repeat: no-repeat;
 }
 
 .home-gauge-box {
+    margin: auto;
     width: 200px;
     height: 200px;
-    margin: auto;
 }
 
 .wide-gauge-title,
 .gauge-title {
-    font-size: 1.1em;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
     position: relative;
     top: -40px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
-.wide-gauge-title
-{
-    top:20px;
-    font-size:1.7em;
+.wide-gauge-title {
+    top: 20px;
+    font-size: 1.7em;
 }
 
 
 .big-sales-tab {
     display: inline-block;
+    width: 23.4%;
     height: 4.3em;
+    border-right: solid 3px #595A5C;
     vertical-align: baseline;
     text-align: center;
     font-size: 1.25em;
-    width: 23.4%;
-    border-right: solid 3px #595A5C;
 }
 
     .big-sales-tab:nth-of-type(4) {
@@ -170,43 +166,43 @@
 .big-sales-tab-amount {
     display: block;
     width: 100%;
-    text-align: center;
     height: 18px;
+    text-align: center;
 }
 
 .big-sales-tab-title {
-    color: #EAEAEA;
-    font-size: 1.7em;
-    height: 1.2em;
     margin-bottom: 5px;
+    height: 1.2em;
+    color: #EAEAEA;
     font-weight: bold;
+    font-size: 1.7em;
 }
 
 .big-sales-tab-amount {
+    height: 1.6em;
     color: #F18449;
     font-size: 1.5em;
-    height: 1.6em;
 }
 
 .billboard-charts {
+    float: left;
     padding: 10px 40px;
     width: 600px;
-    float: left;
 }
 
 .top-singles-list {
     display: inline-block;
     float: left;
     overflow: hidden;
-    height: 930px;
     width: 300px;
+    height: 930px;
 }
 
 
 .list-title {
-    font-size: 1.9em;
     color: #F18449;
     font-weight: bold;
+    font-size: 1.9em;
 }
 
 .top-single-song-list-item,
@@ -214,18 +210,18 @@
 .top-single-song-list-item,
 .top-album-list-item {
     display: block;
-    height: 110px;
     margin: 15px 0;
+    height: 110px;
 }
 
-.top-single-song-list-item,
-.top-album-list-item,
-.top-single-song-list-item > div,
-.top-album-list-item > div,
-.top-single-song-list-item > img,
-.top-album-list-item > img {
-    float: left;
-}
+    .top-single-song-list-item,
+    .top-album-list-item,
+    .top-single-song-list-item > div,
+    .top-album-list-item > div,
+    .top-single-song-list-item > img,
+    .top-album-list-item > img {
+        float: left;
+    }
 
 #topSinglesListView,
 #topAlbumsListView {
@@ -245,14 +241,24 @@
         margin: 10px 0;
     }
 
-    .big-sales-tab-title
-    {
-        font-size:1.5em;
+    .big-sales-tab-title {
+        font-size: 1.5em;
     }
 
-    .big-sales-tab-amount
+    .big-sales-tab-amount {
+        font-size: 1.3em;
+    }
+}
+
+@media only screen and (max-width : 767px) {
+
+    .big-sales-tab {
+        font-size: .75em;
+    }
+
+    .main-hero-wrapper
     {
-        font-size:1.3em;
+        width:auto;
     }
 
 }

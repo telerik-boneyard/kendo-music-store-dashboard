@@ -6,7 +6,7 @@
 }
 
 .social-tiles {
-    width: 900px;
+    width: 80%;
     margin: 0 auto 30px auto;
     display: block;
     height: 125px;
@@ -15,6 +15,7 @@
 .social-tile-wrapper {
     height: 110px;
     float: left;
+    width: 25%;
 }
 
 .social-tile {
@@ -278,5 +279,12 @@
 
     .social-linear-gauge-wrapper {
         margin: 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    .social-tile-title {
+        display: none;
     }
 }
