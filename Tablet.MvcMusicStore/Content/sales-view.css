@@ -112,17 +112,6 @@
     height: 50px;
 }
 
-/*.time-sales-tab {
-    width: 32%;
-    display: inline-block;
-    height: 30px;
-    line-height: 30px;
-    font-size: 1.25em;
-    text-align: center;
-    background-color: #3F3F3F;
-    border-right: solid 1px #111;
-}*/
-
 .time-sales-tab:first-of-type {
     -webkit-border-radius: 5px 0px 0px 5px;
     border-radius: 5px 0px 0px 5px;
@@ -140,6 +129,10 @@
     font: 16px/1.8em;
     float: left;
 }
+
+ .time-sales-tab:hover {
+     color: white;
+ }
 
 .store-tabs {
     margin: 10px auto;
@@ -232,7 +225,12 @@
     margin: 5px auto;
     padding: 2px 10px;
     display: inline-block;
+    cursor: pointer
 }
+
+    .sales-chart-options-item:hover {
+        color: white;
+    }
 
 .sales-chart-options-item-selected {
     background-color: #EF8549;
