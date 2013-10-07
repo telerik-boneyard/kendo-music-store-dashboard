@@ -310,6 +310,7 @@
     <Content Include="js\app\mainView.js" />
     <Content Include="js\app\salesView.js" />
     <Content Include="js\app\socialView.js" />
+    <Content Include="js\libs\kendo.all.js" />
     <Content Include="js\libs\kendo.all.min.js" />
     <Content Include="Views\Home\Templates.cshtml" />
     <Content Include="Views\Home\socialView.cshtml" />
