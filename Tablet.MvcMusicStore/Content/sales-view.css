@@ -33,6 +33,10 @@
     margin: 5px;
 }
 
+    .chart-type-item:hover {
+        cursor: pointer;
+    }
+
 .chart-type-area {
     background-position: -60px 2px;
 }
