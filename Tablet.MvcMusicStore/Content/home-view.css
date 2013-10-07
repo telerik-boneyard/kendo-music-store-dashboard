@@ -54,13 +54,13 @@
 .album-list-title {
     margin: 0 15px;
     width: 180px;
-    height: 1.2em;
     color: #747273;
     vertical-align: top;
     font-size: 1.2em;
 }
 
 .album-list-title {
+    height: 1.2em;
     overflow: hidden;
     color: #eee;
 }
@@ -187,14 +187,13 @@
 .billboard-charts {
     float: left;
     padding: 10px 40px;
-    width: 600px;
 }
 
 .top-singles-list {
     display: inline-block;
     float: left;
     overflow: hidden;
-    width: 300px;
+    width: 330px;
     height: 930px;
 }
 
@@ -206,12 +205,12 @@
 }
 
 .top-single-song-list-item,
-.top-album-list-item,
-.top-single-song-list-item,
 .top-album-list-item {
     display: block;
-    margin: 15px 0;
-    height: 110px;
+    margin: 15px 9px;
+    height: 100px;
+    border: 2px solid transparent;
+    padding: 3px
 }
 
     .top-single-song-list-item,
@@ -221,6 +220,12 @@
     .top-single-song-list-item > img,
     .top-album-list-item > img {
         float: left;
+    }
+
+    .top-single-song-list-item:hover,
+    .top-album-list-item:hover {
+        cursor: pointer;
+        border-color: #747273;
     }
 
 #topSinglesListView,
