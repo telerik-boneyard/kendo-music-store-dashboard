@@ -343,10 +343,10 @@
             chart.redraw();
         },
 
-        createSalesView: function () {
+        createSalesView: function (target) {
 
-            var that = this,
-                get_vars = that.parseQuerystring();
+            var that = this;
+                //get_vars = that.parseQuerystring();
 
             this.setupSalesUrls();
 
@@ -399,14 +399,14 @@
 
             musicDashboard.salesView.render("#main");
 
-            if (get_vars["target"] === "album") {
+            if (target === "album") {
 
                 that.albumSales = "api/sales/AlbumSales/" + that.salesPeriod;
 
                 that.updateSalesChartData.call(document.querySelector(".sales-chart-options-albums"),
                         that.albumSales, "Store Album Sales", that);
 
-            } else if (get_vars["target"] === "singles") {
+            } else if (target === "singles") {
 
                 that.singleSales = "api/sales/SingleSales/" + that.salesPeriod;
 

@@ -65,7 +65,7 @@
                     window.musicDashboard.mainViewLogic.createMainView();
                 });
 
-                that.router.route("/sales", function () {
+                that.router.route("/sales(/:target)", function (target) {
 
                     that.mainView.destroy();
                     that.socialView.destroy();
@@ -77,7 +77,7 @@
                     $(".nav-sales-icon").addClass("main-nav-item-icon-selected");
                     $(".nav-sales").addClass("main-nav-item-selected");
 
-                    window.musicDashboard.salesViewLogic.createSalesView();
+                    window.musicDashboard.salesViewLogic.createSalesView(target);
                 });
 
                 that.router.route("/social", function () {

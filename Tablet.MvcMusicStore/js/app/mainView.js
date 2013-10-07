@@ -66,7 +66,7 @@
 
                         e.preventDefault();
 
-                        window.location = "#/sales?target=singles";
+                        window.location = "#/sales/singles";
 
                     });
                 }
@@ -93,7 +93,7 @@
 
                         e.preventDefault();
 
-                        window.location = "#/sales?target=album";
+                        window.location = "#/sales/album";
 
                     });
 
