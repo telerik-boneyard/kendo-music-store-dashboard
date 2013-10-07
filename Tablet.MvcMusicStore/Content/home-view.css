@@ -29,7 +29,11 @@
         font-size: 2em;
     }
 
-
+.main-page-top-metrics {
+    width: 1040px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .main-hero-wrapper {
     display: inline-block;
