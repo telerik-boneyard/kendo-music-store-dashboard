@@ -27,7 +27,10 @@
     border: solid transparent 1px;
     -webkit-border-radius: 17px;
     border-radius: 17px;
-    float: right;
+    float: left;
+    z-index: 1;
+    position: relative;
+    cursor: pointer;
 }
 
 .social-tile-selected {
@@ -41,12 +44,17 @@
     color: #333134;
     font: 16px/1.8em Arial,sans-serif;
     padding: 1px 20px 1px 30px;
-    float: right;
+    float: left;
     position: relative;
     top: 40px;
     left: -20px;
-    z-index: -5;
+    cursor: pointer;
 }
+
+    .social-tile:hover + .social-tile-title,
+    .social-tile-title:hover {
+        color: white;
+    }
 
 .social-tile-title-selected {
     background-color: #F18449;
