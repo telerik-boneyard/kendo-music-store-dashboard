@@ -230,6 +230,7 @@
     .top-album-list-item:hover {
         cursor: pointer;
         border-color: #747273;
+        background: rgba(0,0,0,.5);
     }
 
 #topSinglesListView,
