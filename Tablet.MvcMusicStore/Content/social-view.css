@@ -188,14 +188,24 @@
         padding: 0 .5em;
         height: 1.8em;
         line-height: 1.6em;
+        color: black;
     }
 
     .time-sales-tab-selected,
     #top-artists-tabstrip .k-state-active,
     #top-songs-tabstrip .k-state-active {
         border: none;
-        color: #fff;
         background: #EF8549;
+    }
+
+    #top-artists-tabstrip .k-state-active .k-link,
+    #top-songs-tabstrip .k-state-active .k-link {
+        color: #fff;
+    }
+
+    #top-artists-tabstrip .k-state-hover .k-link,
+    #top-songs-tabstrip .k-state-hover .k-link {
+        color: #fff;
     }
 
     #top-songs-tabstrip .k-item:first-of-type,
