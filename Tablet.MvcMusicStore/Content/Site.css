@@ -122,14 +122,6 @@ h2 {
     line-height: 24pt;
 }
 
-    h2:hover {
-        color: #A05432;
-    }
-
-    h2:active {
-        color: #A05432;
-    }
-
 
 .store-nav {
     width: 150px;
