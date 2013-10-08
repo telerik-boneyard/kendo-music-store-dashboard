@@ -153,6 +153,7 @@
                 chart = $("#social-stats-chart").data('kendoChart');
 
             $this.data('selected', !selected);
+            $this.attr('data-selected', !selected);
 
             if (selected) {
                 $(".social-tile-selected", $this).removeClass("social-tile-selected");
@@ -162,10 +163,11 @@
                 $(".social-tile-title", $this).addClass("social-tile-title-selected");
             }
 
-            chart.options.valueAxis = that.buildSocialStatsValueAxis();
-            chart.options.series = that.buildSocialStatsSeries();
+            chart.setOptions({
+                valueAxis: that.buildSocialStatsValueAxis(),
+                series: that.buildSocialStatsSeries()
+            });
             chart.refresh();
-
         },
 
         createSocialChart: function () {
@@ -192,7 +194,6 @@
                     }
                 }),
                 $socialSalesChart = $("#social-stats-chart"),
-                chart,
                 topArtists = new kendo.data.DataSource({
                     transport: {
                         read: 'api/top/artists'
@@ -204,21 +205,11 @@
                                 autoBind: false,
                                 dataTextField: "Name",
                                 change: function () {
-
-                                    var id = result.items[this.select().index()].Id,
-                                        initSocial = $(".social-tile-wrapper[data-selected=true]");
-                                    //re-fetch dependent datasource...
+                                    var id = result.items[this.select().index()].Id;
+                                    
                                     topSongs.read({ artistId: id });
-
-                                    $(".social-tile-selected").removeClass("social-tile-selected");
-                                    $(".social-tile-title").removeClass("social-tile-title-selected");
-
-                                    $(".social-tile", initSocial).addClass("social-tile-selected");
-                                    $(".social-tile-title", initSocial).addClass("social-tile-title-selected");
-
                                     that.socialStatsDataSource.read({ artistId: id });
                                     socialAwarenessDataSource.read({ artistId: id });
-
                                 }
                             }
                         ).data('kendoTabStrip').select(0);
