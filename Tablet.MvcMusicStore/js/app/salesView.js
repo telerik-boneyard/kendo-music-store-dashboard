@@ -212,29 +212,6 @@
 
         },
 
-        parseQuerystring: function () {
-
-            var qs = window.location.hash.split('?');
-
-            if (qs.length > 1) {
-
-                var foo = qs[1].split('&'),
-                    dict = {},
-                    elem = [],
-                    i = 0;
-
-                for (i = foo.length - 1; i >= 0; i--) {
-                    elem = foo[i].split('=');
-                    dict[elem[0]] = elem[1];
-                }
-
-                return dict;
-
-            }
-
-            return "";
-        },
-
         getLabelOptions: function (period) {
 
             if (period == 'monthly')
@@ -344,7 +321,6 @@
         createSalesView: function (target) {
 
             var that = this;
-                //get_vars = that.parseQuerystring();
 
             this.setupSalesUrls();
 
