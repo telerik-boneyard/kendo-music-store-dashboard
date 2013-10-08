@@ -109,7 +109,7 @@
                     name: 'Likes',
                     type: 'line',
                     axis: 'Likes',
-                    color: "#4099FF"
+                    color: "#3B5998"
                 });
             }
 
@@ -119,7 +119,7 @@
                     name: 'Tweets',
                     type: 'line',
                     axis: 'Tweets',
-                    color: "#3B5998"
+                    color: "#4099FF"
                 });
             }
 
