@@ -232,7 +232,6 @@
 
 
 .radial-gauge-container {
-    display: inline-block;
     margin: 1%;
     background-image: url("../img/record-gauge-home.png");
     background-repeat: no-repeat;
@@ -243,7 +242,6 @@
 .linear-gauge-container {
     height: 430px;
     padding: 80px 0 0 0;
-    display: inline-block;
     margin: 1%;
     width: 130px;
 }
@@ -252,13 +250,16 @@
 .social-gauges,
 .social-linear-gauges {
     margin: 0 1%;
-    display: inline-block;
     float: left;
 }
 
 
 .social-gauges {
     width: 30%;
+}
+
+.social-gauge-item {
+    display: inline-block;
 }
 
 .social-linear-gauges {
@@ -270,10 +271,6 @@
     .social-linear-gauge-wrapper {
         margin: 0 1%;
     }
-
-    .linear-gauge-container {
-        display: none;
-    }
 }
 
 /* iPads (landscape) ----------- */
@@ -282,10 +279,6 @@
 
     #top-artists-tabstrip .k-item {
         font: 14px/1.5em Arial,sans-serif;
-    }
-
-    .linear-gauge-container {
-        display: none;
     }
 
     .social-tiles {
