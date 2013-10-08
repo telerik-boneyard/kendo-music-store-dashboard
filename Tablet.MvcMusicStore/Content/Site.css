@@ -50,6 +50,9 @@ h1 {
     display: inline-block;
     vertical-align: middle;
 }
+    .main-nav-item:hover:not(.main-nav-item-selected) {
+        background: #A05432;
+    }
 
 .main-nav-item-selected {
     background: rgba(255,255,255,.2);
