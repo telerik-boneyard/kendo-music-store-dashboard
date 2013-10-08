@@ -204,6 +204,7 @@
     #top-songs-tabstrip .k-state-active {
         border: none;
         background: #EF8549;
+        color: #fff;
     }
 
     #top-artists-tabstrip .k-state-active .k-link,
