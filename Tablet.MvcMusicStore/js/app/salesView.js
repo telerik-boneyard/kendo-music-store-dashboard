@@ -114,8 +114,7 @@
                 series: [{
                     type: "column",
                     field: "Sales",
-                    name: "Sales",
-                    groupNameTemplate: "#= group.value #"
+                    name: "Sales"
                 }],
                 valueAxis: {
                     color: "#fff",
@@ -171,8 +170,7 @@
                 series: [{
                     type: "column",
                     field: "Searches",
-                    name: "Searches",
-                    groupNameTemplate: "#= group.value #"
+                    name: "Searches"
                 }],
 
                 valueAxis: {

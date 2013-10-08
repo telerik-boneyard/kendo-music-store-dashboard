@@ -100,8 +100,7 @@
             var series = [{
                 type: "column",
                 field: "Sales",
-                name: "Sales",
-                groupNameTemplate: "#= group.value # (#= series.name #)"
+                name: "Sales"
             }];
 
             if ($('.facebook-tile').hasClass("social-tile-selected")) {
