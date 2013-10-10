@@ -23,3 +23,5 @@ MvcMusicStore/App_Data/*
 Tablet.MvcMusicStore/App_Data/*
 .JustCode
 .DS_Store
+*.user
+
