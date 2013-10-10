@@ -115,6 +115,3 @@
     return (window.musicDashboard = musicDashboard);
 
 }(window, window.jQuery, window.kendo));
-
-
-$(document).data("kendoSkin", "uniform");
