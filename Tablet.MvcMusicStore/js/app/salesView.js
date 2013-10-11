@@ -4,19 +4,11 @@
         salesGenrePeriod: 'weekly',
         searchesGenrePeriod: 7,
         salesChartType: "line",
-        totalSalesUrl: "api/sales/TotalSales/" + this.salesPeriod,
-        albumSales: "api/sales/AlbumSales/" + this.salesPeriod,
-        singleSales: "api/sales/SingleSales/" + this.salesPeriod,
-        totalDownloads: "api/sales/TotalDownloads/" + this.salesPeriod,
-        ticketSales: "api/sales/TicketSales/" + this.salesPeriod,
-
-        setupSalesUrls: function () {
-            this.totalSalesUrl = "api/sales/TotalSales/" + this.salesPeriod;
-            this.albumSales = "api/sales/AlbumSales/" + this.salesPeriod;
-            this.singleSales = "api/sales/SingleSales/" + this.salesPeriod;
-            this.totalDownloads = "api/sales/TotalDownloads/" + this.salesPeriod;
-            this.ticketSales = "api/sales/TicketSales/" + this.salesPeriod;
-        },
+        totalSalesUrl: function () { return baseUrl + "/api/sales/TotalSales/" + musicDashboard.salesViewLogic.salesPeriod; },
+        albumSales: function () { return baseUrl + "/api/sales/AlbumSales/" + musicDashboard.salesViewLogic.salesPeriod; },
+        singleSales: function () { return baseUrl + "/api/sales/SingleSales/" + musicDashboard.salesViewLogic.salesPeriod; },
+        totalDownloads:  function () { return baseUrl + "/api/sales/TotalDownloads/" + musicDashboard.salesViewLogic.salesPeriod; },
+        ticketSales :  function () { return baseUrl + "/api/sales/TicketSales/" + musicDashboard.salesViewLogic.salesPeriod; },
 
         salesByGenreChartDataSource: undefined,
         searchesByGenreChartDataSource: undefined,
@@ -321,13 +313,11 @@
         createSalesView: function (target) {
 
             var that = this;
-
-            this.setupSalesUrls();
-
+            
             that.salesByGenreChartDataSource = new kendo.data.DataSource({
                 transport: {
                     read: {
-                        url: "api/salesbygenre/" + that.salesGenrePeriod,
+                        url: baseUrl + "/api/salesbygenre/" + that.salesGenrePeriod,
                         dataType: "json"
                     }
                 },
@@ -350,7 +340,7 @@
             that.searchesByGenreChartDataSource = new kendo.data.DataSource({
                 transport: {
                     read: {
-                        url: "api/searchesbygenre/" + that.salesGenrePeriod,
+                        url: baseUrl + "/api/searchesbygenre/" + that.salesGenrePeriod,
                         dataType: "json"
                     }
                 },
@@ -375,14 +365,10 @@
 
             if (target === "album") {
 
-                that.albumSales = "api/sales/AlbumSales/" + that.salesPeriod;
-
                 that.updateSalesChartData.call(document.querySelector(".sales-chart-options-albums"),
                         that.albumSales, "Store Album Sales", that);
 
             } else if (target === "singles") {
-
-                that.singleSales = "api/sales/SingleSales/" + that.salesPeriod;
 
                 that.updateSalesChartData.call(document.querySelector(".sales-chart-options-singles"),
                         that.singleSales, "Store Single Sales", that);
@@ -411,7 +397,7 @@
                 $this.addClass("time-sales-tab-selected");
 
                 that.salesByGenreChartDataSource
-                    .options.transport.read.url = "api/salesbygenre/" + period;
+                    .options.transport.read.url = baseUrl + "/api/salesbygenre/" + period;
 
                 $('.sales-by-genre-chart')
                     .data('kendoChart')
@@ -435,7 +421,7 @@
                 $this.addClass("time-sales-tab-selected");
 
                 that.searchesByGenreChartDataSource
-                    .options.transport.read.url = "api/searchesbygenre/" + period;
+                    .options.transport.read.url = baseUrl + "/api/searchesbygenre/" + period;
 
                 $('.searches-by-genre-chart')
                     .data('kendoChart')
@@ -446,31 +432,26 @@
 
             $(".sales-chart-options-albums").click(function (e) {
                 e.preventDefault();
-                that.albumSales = "api/sales/AlbumSales/" + that.salesPeriod;
                 that.updateSalesChartData.call(this, that.albumSales, "Store Album Sales", that);
             });
 
             $(".sales-chart-options-singles").click(function (e) {
                 e.preventDefault();
-                that.singleSales = "api/sales/SingleSales/" + that.salesPeriod;
                 that.updateSalesChartData.call(this, that.singleSales, "Store Single Sales", that);
             });
 
             $(".sales-chart-options-sales").click(function (e) {
                 e.preventDefault();
-                that.totalSalesUrl = "api/sales/TotalSales/" + that.salesPeriod;
                 that.updateSalesChartData.call(this, that.totalSalesUrl, "Store Total Sales", that);
             });
 
             $(".sales-chart-options-downloads").click(function (e) {
                 e.preventDefault();
-                that.totalDownloads = "api/sales/TotalDownloads/" + that.salesPeriod;
                 that.updateSalesChartData.call(this, that.totalDownloads, "Store Downloads", that);
             });
 
             $(".sales-chart-options-tickets").click(function (e) {
                 e.preventDefault();
-                that.ticketSales = "api/sales/TicketSales/" + that.salesPeriod;
                 that.updateSalesChartData.call(this, that.ticketSales, "Store Ticket Sales", that);
             });
 

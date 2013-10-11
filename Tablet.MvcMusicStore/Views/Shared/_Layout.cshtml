@@ -43,6 +43,9 @@
 
     @RenderSection("templates", required: false)
 
+    <script type="text/javascript">
+        var baseUrl = '@Url.Content("~").TrimEnd('/')';
+    </script>
     <script src="@Url.Content("~/js/libs/jquery-2.0.0.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/js/libs/kendo.all.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/js/app/app.js")" type="text/javascript"></script>

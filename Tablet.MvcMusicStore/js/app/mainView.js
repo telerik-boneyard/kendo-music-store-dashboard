@@ -26,7 +26,7 @@
             var item,
                 totals = new kendo.data.DataSource({
                     transport: {
-                        read: 'api/sales/totals'
+                        read: baseUrl + '/api/sales/totals'
                     },
                     schema: {
                         data: function (response) {
@@ -51,7 +51,7 @@
             var dataSource = new kendo.data.DataSource({
                 transport: {
                     read: {
-                        url: "api/top/tracks",
+                        url: baseUrl + "/api/top/tracks",
                         dataType: "json"
                     }
                 }
@@ -78,7 +78,7 @@
             var dataSource = new kendo.data.DataSource({
                 transport: {
                     read: {
-                        url: "api/top/albums",
+                        url: baseUrl + "/api/top/albums",
                         dataType: "json"
                     }
 
@@ -173,7 +173,7 @@
             var that = this,
                 gaugeValueDataSource = new kendo.data.DataSource({
                     transport: {
-                        read: 'api/sales/gauges'
+                        read: baseUrl + '/api/sales/gauges'
                     },
                     schema: {
                         data: function (response) {

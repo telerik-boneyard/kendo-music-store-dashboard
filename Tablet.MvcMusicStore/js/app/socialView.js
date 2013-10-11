@@ -175,7 +175,7 @@
             var that = this,
                 socialAwarenessDataSource = new kendo.data.DataSource({
                     transport: {
-                        read: 'api/social/awareness'
+                        read: baseUrl + '/api/social/awareness'
                     },
                     schema: {
                         data: function (response) {
@@ -196,7 +196,7 @@
                 $socialSalesChart = $("#social-stats-chart"),
                 topArtists = new kendo.data.DataSource({
                     transport: {
-                        read: 'api/top/artists'
+                        read: baseUrl + '/api/top/artists'
                     },
                     change: function (result) {
                         $('#top-artists-tabstrip').kendoTabStrip(
@@ -217,7 +217,7 @@
                 }),
                 socialHeatDataSource = new kendo.data.DataSource({
                     transport: {
-                        read: 'api/social/heat'
+                        read: baseUrl + '/api/social/heat'
                     },
                     schema: {
                         data: function (response) {
@@ -245,7 +245,7 @@
                 }),
                 topSongs = new kendo.data.DataSource({
                     transport: {
-                        read: 'api/top/tracks'
+                        read: baseUrl + '/api/top/tracks'
                     },
                     change: function (result) {
 
@@ -271,7 +271,7 @@
             that.socialStatsDataSource = new kendo.data.DataSource({
                 transport: {
                     read: {
-                        url: "api/social/stats/",
+                        url: baseUrl + '/api/social/stats/',
                         dataType: "json"
                     }
                 },

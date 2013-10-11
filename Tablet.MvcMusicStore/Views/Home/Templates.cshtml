@@ -22,7 +22,7 @@
 
 <script type="text/x-kendo-tmpl" id="top-single-template">
     <div class="top-single-song-list-item">
-        <img src="${ArtUrl}" alt="${Name}" width="100px" height="100px" />
+        <img src="${baseUrl + ArtUrl}" alt="${Name}" width="100px" height="100px" />
         <div class="album-list-item-wrapper">
             <div class="album-list-title">${Name}</div>
             <div class="album-list-subtitle">${AlbumName}</div>
@@ -33,7 +33,7 @@
 
 <script type="text/x-kendo-tmpl" id="top-album-template">
      <div class="top-album-list-item">
-        <img src="${ArtUrl}" alt="${Name}" width="100px" height="100px" />
+        <img src="${baseUrl + ArtUrl}" alt="${Name}" width="100px" height="100px" />
         <span class="album-list-item-wrapper">
             <div class="album-list-title">${Name}</div>
             <div class="album-list-price">${kendo.toString(Price, 'c')}</div>
