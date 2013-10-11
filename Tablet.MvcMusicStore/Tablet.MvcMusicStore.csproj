@@ -237,6 +237,7 @@
     <Content Include="Views\Home\socialView.cshtml" />
     <Content Include="Views\Home\salesView.cshtml" />
     <Content Include="Views\Home\mainView.cshtml" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\TestSite.pubxml" />
   </ItemGroup>
   <ItemGroup>
