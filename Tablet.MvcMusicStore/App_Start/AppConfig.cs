@@ -11,9 +11,11 @@ namespace Tablet.MvcMusicStore
     {
         public static void Config()
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<DashboardEntities, Configuration>());
-            Database.SetInitializer<DashboardEntities>(null);
-
+            #if DEBUG
+                Database.SetInitializer(new MigrateDatabaseToLatestVersion<DashboardEntities, Configuration>());
+            #else
+                Database.SetInitializer<DashboardEntities>(null);
+            #endif
             using (var context = new DashboardEntities())
             {
                 context.Database.Initialize(true);
